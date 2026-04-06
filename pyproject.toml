@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "symptothermal-nfp"
+version = "0.1.0"
+description = "Local-first sympto-thermal fertility tracking foundation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+symptothermal = "symptothermal_nfp.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "packages/domain"}
+
+[tool.setuptools.packages.find]
+where = ["packages/domain"]
+
+[tool.pytest.ini_options]
+pythonpath = ["packages/domain"]
+testpaths = ["tests"]

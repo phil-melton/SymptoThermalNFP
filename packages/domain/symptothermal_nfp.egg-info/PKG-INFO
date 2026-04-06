@@ -1,0 +1,69 @@
+Metadata-Version: 2.4
+Name: symptothermal-nfp
+Version: 0.1.0
+Summary: Local-first sympto-thermal fertility tracking foundation
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+
+# SymptoThermalNFP
+
+Initial implementation for Phase 1 of the project plan is now in place with a
+Python-first domain and local persistence foundation.
+
+## What Is Implemented In This Stage
+
+1. Domain models for daily observations and settings.
+2. Symptom taxonomy enums for temperature, fluid, bleeding, and cervical signs.
+3. Local SQLite persistence with migration tracking.
+4. CLI commands for fast daily logging, history review, and settings.
+5. Automated tests for domain and storage behavior.
+
+## Repository Shape
+
+```text
+apps/
+  mobile/
+docs/
+  project-plan.md
+  agent-reports/
+packages/
+  domain/
+    symptothermal_nfp/
+tests/
+```
+
+## Quick Start
+
+1. Create a Python environment.
+2. Install development dependencies:
+
+   ```bash
+   pip install -e .[dev]
+   ```
+
+3. Initialize local data store:
+
+   ```bash
+   symptothermal init-db
+   ```
+
+4. Set baseline settings:
+
+   ```bash
+   symptothermal set-settings --temperature-unit celsius --wake-time 06:30 --track-cervical-position
+   ```
+
+5. Log a daily observation:
+
+   ```bash
+   symptothermal log-observation --date 2026-04-06 --temperature 36.45 --temperature-time 06:22 --fluid-sensation watery --fluid-quantity high --bleeding none --notes "Felt well-rested"
+   ```
+
+6. View observations and cycle history:
+
+   ```bash
+   symptothermal list-observations
+   symptothermal list-cycles
+   ```

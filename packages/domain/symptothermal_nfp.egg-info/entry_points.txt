@@ -1,0 +1,2 @@
+[console_scripts]
+symptothermal = symptothermal_nfp.cli:main
