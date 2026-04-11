@@ -42,6 +42,7 @@ def test_observation_round_trip(tmp_path) -> None:
         waking_temperature=36.45,
         temperature_time=dt.time(6, 20),
         temperature_disturbed=False,
+        temperature_unit=TemperatureUnit.CELSIUS,
         fluid=FluidObservation(
             sensation=FluidSensation.WATERY,
             quantity=FluidQuantity.HIGH,

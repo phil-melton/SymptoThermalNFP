@@ -5,7 +5,10 @@ from .models import (
     CervicalPositionObservation,
     CycleSnapshot,
     DailyObservation,
+    DayRuleTrace,
+    EvaluationResult,
     FluidObservation,
+    PriorCycleSummary,
     build_cycle_history,
 )
 from .storage import LocalStore
@@ -14,6 +17,7 @@ from .taxonomy import (
     CervixFirmness,
     CervixHeight,
     CervixOpening,
+    FertilityState,
     FluidQuantity,
     FluidSensation,
     TemperatureUnit,
@@ -28,10 +32,14 @@ __all__ = [
     "CervixOpening",
     "CycleSnapshot",
     "DailyObservation",
+    "DayRuleTrace",
+    "EvaluationResult",
+    "FertilityState",
     "FluidObservation",
     "FluidQuantity",
     "FluidSensation",
     "LocalStore",
+    "PriorCycleSummary",
     "TemperatureUnit",
     "build_cycle_history",
 ]

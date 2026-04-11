@@ -253,8 +253,9 @@ def handle_plot_cycle(args: argparse.Namespace) -> int:
         print(f"No observations found for cycle {args.cycle_index}.")
         return 1
 
+    settings = store.load_settings()
     from .plot import plot_cycle
-    plot_cycle(observations, save_path=args.save)
+    plot_cycle(observations, settings=settings, save_path=args.save)
     return 0
 
 
