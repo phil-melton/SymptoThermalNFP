@@ -54,3 +54,9 @@ class CervixOpening(StringEnum):
     CLOSED = "closed"
     MEDIUM = "medium"
     OPEN = "open"
+
+
+class FertilityState(StringEnum):
+    PRE_OV_INFERTILE = "pre_ov_infertile"
+    FERTILE = "fertile"
+    POST_OV_INFERTILE = "post_ov_infertile"

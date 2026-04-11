@@ -1,0 +1,74 @@
+# Fahrenheit conversion cycle
+# Tests: Bug 1 fix - temperatures stored in Fahrenheit are correctly converted
+#   to Celsius internally. All thresholds applied in Celsius.
+# Coverline and thresholds verified in both units.
+
+name: "Fahrenheit input with correct conversion"
+description: "Temps entered in Fahrenheit; algorithm converts to Celsius and applies +0.2C threshold"
+
+settings:
+  temperature_unit: fahrenheit
+
+prior_cycles: []
+
+observations:
+  # Fahrenheit temps. Coverline temps in F: 97.0-97.4 range.
+  # Converted to C: (F-32)*5/9
+  # 97.0F = 36.111C, 97.2F = 36.222C, 97.4F = 36.333C, 97.1F = 36.167C
+  # 97.3F = 36.278C
+  # Coverline (max of 6 lows in C) will be computed from converted values.
+  - { date: "2024-09-01", temperature: 97.2, temperature_unit: fahrenheit, fluid: { sensation: dry }, bleeding: heavy }
+  - { date: "2024-09-02", temperature: 97.0, temperature_unit: fahrenheit, fluid: { sensation: dry }, bleeding: medium }
+  - { date: "2024-09-03", temperature: 97.2, temperature_unit: fahrenheit, fluid: { sensation: dry }, bleeding: light }
+  - { date: "2024-09-04", temperature: 97.1, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  - { date: "2024-09-05", temperature: 97.3, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  - { date: "2024-09-06", temperature: 97.0, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  - { date: "2024-09-07", temperature: 97.1, temperature_unit: fahrenheit, fluid: { sensation: sticky } }
+  - { date: "2024-09-08", temperature: 97.2, temperature_unit: fahrenheit, fluid: { sensation: creamy } }
+  - { date: "2024-09-09", temperature: 97.0, temperature_unit: fahrenheit, fluid: { sensation: watery } }
+  - { date: "2024-09-10", temperature: 97.2, temperature_unit: fahrenheit, fluid: { sensation: slippery } }
+  # Day 11: peak day
+  - { date: "2024-09-11", temperature: 97.1, temperature_unit: fahrenheit, fluid: { sensation: slippery } }
+  # Day 12: 1st high. 6 preceding valid: days 6-11 (in C).
+  # C values: 36.111, 36.167, 36.222, 36.111, 36.222, 36.167
+  # Coverline = max = 36.222 C (from 97.2F days)
+  # 97.8F = 36.556C. 36.556 > 36.222. 1st high.
+  - { date: "2024-09-12", temperature: 97.8, temperature_unit: fahrenheit, fluid: { sensation: sticky } }
+  # Day 13: 97.9F = 36.611C > 36.222. 2nd high.
+  - { date: "2024-09-13", temperature: 97.9, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  # Day 14: 97.8F = 36.556C. 36.556 >= 36.222 + 0.2 = 36.422. 3rd high with +0.2.
+  # Temp confirmed evening of day 14.
+  - { date: "2024-09-14", temperature: 97.8, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  # Peak confirmed evening of day 14 (3 dry days after peak day 11).
+  # S2 starts day 15.
+  - { date: "2024-09-15", temperature: 97.9, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+  - { date: "2024-09-16", temperature: 97.8, temperature_unit: fahrenheit, fluid: { sensation: dry } }
+
+expected:
+  t_shift_day: 12
+  # Coverline = (97.2 - 32) * 5/9 = 36.222... C (rounded to 2 decimal places)
+  coverline_celsius: 36.22
+  peak_day: 11
+  temp_confirmed_day: 14
+  peak_confirmed_day: 14
+  infertile_from_day: 15
+  slow_rise_applied: false
+  drop_back_applied: false
+  disqualifiers: []
+  states:
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile
+    - fertile        # day 11 (peak)
+    - fertile        # day 12 (1st high)
+    - fertile        # day 13 (2nd high)
+    - fertile        # day 14 (3rd high, confirmed evening)
+    - post_ov_infertile  # day 15
+    - post_ov_infertile  # day 16

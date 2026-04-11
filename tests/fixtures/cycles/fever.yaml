@@ -1,0 +1,63 @@
+# Fever cycle
+# Tests: Spec SS5 - fever >= 38.0 C during the relevant window disqualifies
+#   the cycle. No S2 phase can be established.
+
+name: "Fever disqualifies cycle"
+description: "Fever >= 38.0 C in the shift window prevents S2 confirmation"
+
+settings:
+  temperature_unit: celsius
+
+prior_cycles: []
+
+observations:
+  - { date: "2024-07-01", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: heavy }
+  - { date: "2024-07-02", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: medium }
+  - { date: "2024-07-03", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: light }
+  - { date: "2024-07-04", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-05", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-06", temperature: 36.1, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-07", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-07-08", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: creamy } }
+  - { date: "2024-07-09", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: watery } }
+  - { date: "2024-07-10", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: slippery } }
+  - { date: "2024-07-11", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Day 12: would be 1st high, but this is a fever day (38.1 >= 38.0)
+  # NOT marked as disturbed by user -- the algorithm must detect the fever
+  - { date: "2024-07-12", temperature: 38.1, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-07-13", temperature: 36.7, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-14", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-15", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-16", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-17", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-07-18", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+
+expected:
+  t_shift_day: null
+  coverline_celsius: null
+  peak_day: null
+  temp_confirmed_day: null
+  peak_confirmed_day: null
+  infertile_from_day: null
+  slow_rise_applied: false
+  drop_back_applied: false
+  disqualifiers: ["fever >= 38.0 C on day 12"]
+  states:
+    - fertile        # day 1
+    - fertile        # day 2
+    - fertile        # day 3
+    - fertile        # day 4
+    - fertile        # day 5
+    - fertile        # day 6
+    - fertile        # day 7
+    - fertile        # day 8
+    - fertile        # day 9
+    - fertile        # day 10
+    - fertile        # day 11
+    - fertile        # day 12 (fever)
+    - fertile        # day 13
+    - fertile        # day 14
+    - fertile        # day 15
+    - fertile        # day 16
+    - fertile        # day 17
+    - fertile        # day 18

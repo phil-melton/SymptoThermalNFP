@@ -1,115 +1,179 @@
-import pytest
+"""
+Tests for the Sensiplan symptothermal algorithm.
+
+All primary tests are driven by YAML fixture files in tests/fixtures/cycles/.
+Each fixture specifies observations, expected states, and expected
+evaluation results, computed by hand from the Sensiplan spec.
+"""
+
+from __future__ import annotations
+
 from datetime import date
-from symptothermal_nfp.models import DailyObservation, FluidObservation
-from symptothermal_nfp.taxonomy import FluidSensation
+from pathlib import Path
+
+import pytest
+
 from symptothermal_nfp.algorithm import evaluate_cycle
+from symptothermal_nfp.models import AppSettings, DailyObservation
+from symptothermal_nfp.taxonomy import FertilityState, TemperatureUnit
 
-def test_fertile_start():
-    # Day 1-3 Dry (State 0), Day 4 Sticky (State 1)
-    days = [
-        DailyObservation(observation_date=date(2023, 1, 1), fluid=FluidObservation(sensation=FluidSensation.DRY)),
-        DailyObservation(observation_date=date(2023, 1, 2), fluid=FluidObservation(sensation=FluidSensation.DRY)),
-        DailyObservation(observation_date=date(2023, 1, 3), fluid=FluidObservation(sensation=FluidSensation.DRY)),
-        DailyObservation(observation_date=date(2023, 1, 4), fluid=FluidObservation(sensation=FluidSensation.STICKY)),
-        DailyObservation(observation_date=date(2023, 1, 5), fluid=FluidObservation(sensation=FluidSensation.DRY)),
-    ]
-    res = evaluate_cycle(days)
-    assert res.states[0] == 0
-    assert res.states[1] == 0
-    assert res.states[2] == 0
-    assert res.states[3] == 1
-    assert res.states[4] == 1
+from conftest import CycleFixture
 
-def test_temp_shift_and_peak():
-    # 10 days total to give room for 6 low temps + 3 day shift + peak drop
-    days = []
-    temps_f = [97.0, 97.1, 97.0, 97.2, 97.1, 97.0, 97.8, 97.9, 98.1, 98.0] # Shift starts at idx 6 (day 7). Coverline is 97.2.
-    mucus = [
-        FluidSensation.DRY, FluidSensation.DRY, FluidSensation.STICKY, FluidSensation.WATERY,
-        FluidSensation.SLIPPERY, FluidSensation.SLIPPERY, FluidSensation.CREAMY, FluidSensation.DRY, FluidSensation.DRY, FluidSensation.DRY
-    ]
 
-    for i in range(10):
-        days.append(DailyObservation(
-            observation_date=date(2023, 1, i+1),
-            waking_temperature=temps_f[i],
-            fluid=FluidObservation(sensation=mucus[i])
-        ))
+FIXTURES_DIR = Path(__file__).parent / "fixtures" / "cycles"
 
-    res = evaluate_cycle(days)
 
-    assert res.t_cover == 97.2
-    assert res.t_shift == 6
-    # temp shift confirmation should be day 6+2 = 8
+class TestEvaluateCycleFromFixtures:
+    """Run evaluate_cycle against every YAML fixture and verify outputs."""
 
-    # Peak day: last day of slippery (score 4) before drop. Index 5.
-    assert res.t_peak == 5
-    # peak confirmation should be day 5+3 = 8
+    def test_states(self, cycle_fixture: CycleFixture) -> None:
+        """Per-day fertility states must match expected."""
+        result = evaluate_cycle(
+            observations=cycle_fixture.observations,
+            settings=cycle_fixture.settings,
+            prior_cycles=cycle_fixture.prior_cycles,
+        )
+        expected_states = [
+            FertilityState(s) for s in cycle_fixture.expected["states"]
+        ]
+        actual_states = list(result.states)
+        assert actual_states == expected_states, (
+            f"Fixture '{cycle_fixture.name}': state mismatch.\n"
+            f"Expected: {[s.value for s in expected_states]}\n"
+            f"Actual:   {[s.value for s in actual_states]}"
+        )
 
-    # Infertile transition should be max(8, 8) = 8
-    assert res.t_infertile == 8
+    def test_t_shift_day(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.t_shift_day == cycle_fixture.expected["t_shift_day"], (
+            f"Fixture '{cycle_fixture.name}': t_shift_day mismatch"
+        )
 
-    assert res.states[0] == 0
-    assert res.states[1] == 0
-    assert res.states[2] == 1 # Sticky
-    assert res.states[8] == 2 # Infertile
-    assert res.states[9] == 2 # Infertile
+    def test_coverline(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        expected = cycle_fixture.expected["coverline_celsius"]
+        if expected is None:
+            assert result.coverline_celsius is None
+        else:
+            assert result.coverline_celsius is not None
+            assert abs(result.coverline_celsius - expected) < 0.015, (
+                f"Fixture '{cycle_fixture.name}': coverline mismatch. "
+                f"Expected ~{expected}, got {result.coverline_celsius}"
+            )
 
-def test_temp_shift_exception():
-    # Test Day 4 exception: Day 3 doesn't reach +0.4 but is above coverline, Day 4 is above coverline
-    days = []
-    temps_f = [97.0, 97.1, 97.0, 97.2, 97.1, 97.0, 97.4, 97.5, 97.4, 97.3]
-    # Shift candidate idx 6 (97.4 > 97.2). Coverline 97.2.
-    # idx 7: 97.5 > 97.2
-    # idx 8: 97.4 >= 97.2 but not +0.4 (which would be 97.6)
-    # idx 9: 97.3 >= 97.2 (Day 4 exception triggers here)
-    for i in range(10):
-        days.append(DailyObservation(
-            observation_date=date(2023, 1, i+1),
-            waking_temperature=temps_f[i],
-            fluid=FluidObservation(sensation=FluidSensation.DRY) # Keep mucus out of the way for this test
-        ))
+    def test_peak_day(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.peak_day == cycle_fixture.expected["peak_day"], (
+            f"Fixture '{cycle_fixture.name}': peak_day mismatch"
+        )
 
-    res = evaluate_cycle(days)
-    assert res.t_cover == 97.2
-    assert res.t_shift == 6
-    # confirmation on Day 4 (idx 6 + 3 = 9)
-    # since no peak, it won't transition to state 2, but we can verify shift_confirmed indirectly if we want, or add an assertion to algorithm.
-    # Currently t_infertile needs both.
+    def test_temp_confirmed_day(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.temp_confirmed_day == cycle_fixture.expected["temp_confirmed_day"], (
+            f"Fixture '{cycle_fixture.name}': temp_confirmed_day mismatch"
+        )
 
-def test_temp_shift_exception_invalid_drop():
-    # Test Day 4 exception failure: Day 3 drops to or below coverline
-    days = []
-    temps_f = [97.0, 97.1, 97.0, 97.2, 97.1, 97.0, 97.4, 97.5, 97.2, 97.5]
-    # Shift candidate idx 6 (97.4 > 97.2). Coverline 97.2.
-    # idx 7: 97.5 > 97.2
-    # idx 8: 97.2 (NOT > 97.2, exception rule should fail here)
-    # idx 9: 97.5 >= 97.2
-    for i in range(10):
-        days.append(DailyObservation(
-            observation_date=date(2023, 1, i+1),
-            waking_temperature=temps_f[i],
-            fluid=FluidObservation(sensation=FluidSensation.DRY)
-        ))
+    def test_peak_confirmed_day(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.peak_confirmed_day == cycle_fixture.expected["peak_confirmed_day"], (
+            f"Fixture '{cycle_fixture.name}': peak_confirmed_day mismatch"
+        )
 
-    res = evaluate_cycle(days)
-    assert res.t_shift is None # Shift should not be confirmed
+    def test_infertile_from_day(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.infertile_from_day == cycle_fixture.expected["infertile_from_day"], (
+            f"Fixture '{cycle_fixture.name}': infertile_from_day mismatch"
+        )
 
-def test_temp_shift_floating_point():
-    days = []
-    # Test exact 0.4 threshold that may have floating point issues
-    temps_f = [97.0, 97.1, 97.0, 97.2, 97.1, 97.0, 97.4, 97.4, 97.6, 97.6]
-    # Coverline 97.2
-    # idx 6: 97.4
-    # idx 7: 97.4
-    # idx 8: 97.6 (97.2 + 0.4 = 97.60000000000001 without rounding)
-    for i in range(10):
-        days.append(DailyObservation(
-            observation_date=date(2023, 1, i+1),
-            waking_temperature=temps_f[i],
-            fluid=FluidObservation(sensation=FluidSensation.DRY)
-        ))
+    def test_slow_rise_flag(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.slow_rise_applied == cycle_fixture.expected["slow_rise_applied"], (
+            f"Fixture '{cycle_fixture.name}': slow_rise_applied mismatch"
+        )
 
-    res = evaluate_cycle(days)
-    assert res.t_shift == 6
-    assert res.t_cover == 97.2
+    def test_drop_back_flag(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert result.drop_back_applied == cycle_fixture.expected["drop_back_applied"], (
+            f"Fixture '{cycle_fixture.name}': drop_back_applied mismatch"
+        )
+
+    def test_day_traces_present(self, cycle_fixture: CycleFixture) -> None:
+        """Every day must have a rule trace."""
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        assert len(result.day_traces) == len(cycle_fixture.observations), (
+            f"Fixture '{cycle_fixture.name}': expected {len(cycle_fixture.observations)} "
+            f"traces, got {len(result.day_traces)}"
+        )
+
+    def test_disqualifiers(self, cycle_fixture: CycleFixture) -> None:
+        result = evaluate_cycle(
+            cycle_fixture.observations,
+            cycle_fixture.settings,
+            cycle_fixture.prior_cycles,
+        )
+        expected_disq = cycle_fixture.expected.get("disqualifiers", [])
+        if expected_disq:
+            assert len(result.disqualifiers) > 0, (
+                f"Fixture '{cycle_fixture.name}': expected disqualifiers but got none"
+            )
+        else:
+            assert len(result.disqualifiers) == 0, (
+                f"Fixture '{cycle_fixture.name}': unexpected disqualifiers: {result.disqualifiers}"
+            )
+
+
+class TestEdgeCases:
+    """Edge cases not covered by YAML fixtures."""
+
+    def test_empty_cycle(self) -> None:
+        """Empty observation list should return empty result."""
+        result = evaluate_cycle([], AppSettings())
+        assert result.states == []
+        assert result.t_shift_day is None
+
+    def test_single_day(self) -> None:
+        """Single observation should be fertile."""
+        obs = DailyObservation(
+            observation_date=date(2024, 1, 1),
+            waking_temperature=36.5,
+            temperature_unit=TemperatureUnit.CELSIUS,
+        )
+        result = evaluate_cycle([obs], AppSettings())
+        assert len(result.states) == 1
+        assert result.states[0] == FertilityState.FERTILE

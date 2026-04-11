@@ -1,0 +1,76 @@
+# Drop-back cycle (Exception 2)
+# Tests: Spec SS4.1 step 5 - one of the 3 high temps falls back to or below
+#   coverline, requiring an additional day to replace it.
+
+name: "Drop-back cycle (Exception 2)"
+description: "2nd high temp drops to coverline, excluded and replaced by 4th day"
+
+settings:
+  temperature_unit: celsius
+
+prior_cycles: []
+
+observations:
+  - { date: "2024-03-01", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: heavy }
+  - { date: "2024-03-02", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: medium }
+  - { date: "2024-03-03", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: light }
+  - { date: "2024-03-04", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-05", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-06", temperature: 36.1, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-07", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-03-08", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: creamy } }
+  - { date: "2024-03-09", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: watery } }
+  - { date: "2024-03-10", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Day 11: peak day (last slippery)
+  - { date: "2024-03-11", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Day 12: 1st high. 6 preceding valid: days 6-11.
+  # Max of [36.1, 36.2, 36.3, 36.2, 36.3, 36.2] = 36.3 = coverline
+  # 36.5 > 36.3 -- 1st high
+  - { date: "2024-03-12", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: sticky } }
+  # Day 13: DROP-BACK. 36.3 = coverline. This day is excluded.
+  - { date: "2024-03-13", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 14: replacement 2nd high. 36.6 > 36.3.
+  - { date: "2024-03-14", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 15: 3rd high. 36.6 >= 36.3 + 0.2 = 36.5. +0.2 threshold met.
+  # Temp confirmed evening of day 15.
+  - { date: "2024-03-15", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Peak rule: 3 days after peak (day 11). Days 12, 13, 14 are drier.
+  # Peak confirmed evening of day 14.
+  # Double-check: max(15, 14) = 15. S2 starts day 16.
+  - { date: "2024-03-16", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-17", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-18", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-19", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-03-20", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+
+expected:
+  t_shift_day: 12
+  coverline_celsius: 36.3
+  peak_day: 11
+  temp_confirmed_day: 15
+  peak_confirmed_day: 14
+  infertile_from_day: 16
+  slow_rise_applied: false
+  drop_back_applied: true
+  disqualifiers: []
+  states:
+    - fertile        # day 1
+    - fertile        # day 2
+    - fertile        # day 3
+    - fertile        # day 4
+    - fertile        # day 5
+    - fertile        # day 6
+    - fertile        # day 7
+    - fertile        # day 8
+    - fertile        # day 9
+    - fertile        # day 10
+    - fertile        # day 11 (peak)
+    - fertile        # day 12 (1st high)
+    - fertile        # day 13 (drop-back, excluded)
+    - fertile        # day 14 (replacement 2nd high)
+    - fertile        # day 15 (3rd high, confirmed evening)
+    - post_ov_infertile  # day 16
+    - post_ov_infertile  # day 17
+    - post_ov_infertile  # day 18
+    - post_ov_infertile  # day 19
+    - post_ov_infertile  # day 20

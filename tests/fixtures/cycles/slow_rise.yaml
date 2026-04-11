@@ -1,0 +1,77 @@
+# Slow-rise cycle (Exception 1)
+# Tests: Spec SS4.1 step 4 - day 3 does not reach coverline + 0.2 C,
+#   so a 4th day is required. Day 4 must be STRICTLY above coverline.
+# Also tests SS4.2 step 3: slow-rise requires 4 dry days after peak instead of 3.
+
+name: "Slow-rise cycle (Exception 1)"
+description: "Day 3 fails +0.2C threshold, day 4 strictly above coverline confirms"
+
+settings:
+  temperature_unit: celsius
+
+prior_cycles: []
+
+observations:
+  - { date: "2024-02-01", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: heavy }
+  - { date: "2024-02-02", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: medium }
+  - { date: "2024-02-03", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: light }
+  - { date: "2024-02-04", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-05", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-06", temperature: 36.1, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-07", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-02-08", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: creamy } }
+  - { date: "2024-02-09", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: watery } }
+  - { date: "2024-02-10", temperature: 36.1, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Day 11: peak day (last slippery)
+  - { date: "2024-02-11", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Day 12: 1st high. 6 preceding valid: days 6-11.
+  # Max of [36.1, 36.2, 36.3, 36.2, 36.1, 36.3] = 36.3 = coverline
+  # 36.4 > 36.3 -- above coverline
+  - { date: "2024-02-12", temperature: 36.4, temperature_unit: celsius, fluid: { sensation: sticky } }
+  # Day 13: 2nd high. 36.5 > 36.3
+  - { date: "2024-02-13", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 14: 3rd day. 36.4 > 36.3 BUT 36.4 < 36.3 + 0.2 = 36.5. Slow rise!
+  - { date: "2024-02-14", temperature: 36.4, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 15: 4th day. 36.4 > 36.3 (strictly above coverline). Temp confirmed evening of day 15.
+  - { date: "2024-02-15", temperature: 36.4, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Peak rule with slow rise: need 4 dry days after peak (day 11).
+  # Post-peak: day 12 (sticky=drier), day 13 (dry), day 14 (dry), day 15 (dry) = 4 days.
+  # Peak confirmed evening of day 15.
+  # Both confirmed day 15 -> S2 starts day 16.
+  - { date: "2024-02-16", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-17", temperature: 36.4, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-18", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-19", temperature: 36.4, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-02-20", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+
+expected:
+  t_shift_day: 12
+  coverline_celsius: 36.3
+  peak_day: 11
+  temp_confirmed_day: 15
+  peak_confirmed_day: 15
+  infertile_from_day: 16
+  slow_rise_applied: true
+  drop_back_applied: false
+  disqualifiers: []
+  states:
+    - fertile        # day 1
+    - fertile        # day 2
+    - fertile        # day 3
+    - fertile        # day 4
+    - fertile        # day 5
+    - fertile        # day 6
+    - fertile        # day 7
+    - fertile        # day 8
+    - fertile        # day 9
+    - fertile        # day 10
+    - fertile        # day 11 (peak)
+    - fertile        # day 12 (1st high)
+    - fertile        # day 13 (2nd high)
+    - fertile        # day 14 (3rd - slow rise)
+    - fertile        # day 15 (4th high, confirmed evening)
+    - post_ov_infertile  # day 16
+    - post_ov_infertile  # day 17
+    - post_ov_infertile  # day 18
+    - post_ov_infertile  # day 19
+    - post_ov_infertile  # day 20

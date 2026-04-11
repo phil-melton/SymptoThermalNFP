@@ -9,6 +9,7 @@ from .taxonomy import (
     CervixFirmness,
     CervixHeight,
     CervixOpening,
+    FertilityState,
     FluidQuantity,
     FluidSensation,
     TemperatureUnit,
@@ -84,6 +85,7 @@ class DailyObservation:
     waking_temperature: float | None = None
     temperature_time: time | None = None
     temperature_disturbed: bool = False
+    temperature_unit: TemperatureUnit | None = None
     fluid: FluidObservation | None = None
     cervical_position: CervicalPositionObservation | None = None
     bleeding: BleedingLevel = BleedingLevel.NONE
@@ -103,6 +105,7 @@ class DailyObservation:
             "waking_temperature": self.waking_temperature,
             "temperature_time": self.temperature_time.strftime("%H:%M") if self.temperature_time else None,
             "temperature_disturbed": self.temperature_disturbed,
+            "temperature_unit": self.temperature_unit.value if self.temperature_unit else None,
             "fluid": self.fluid.as_dict() if self.fluid else None,
             "cervical_position": self.cervical_position.as_dict() if self.cervical_position else None,
             "bleeding": self.bleeding.value,
@@ -113,11 +116,13 @@ class DailyObservation:
     def from_dict(cls, value: dict[str, Any]) -> "DailyObservation":
         fluid_data = value.get("fluid")
         cervix_data = value.get("cervical_position")
+        tu = value.get("temperature_unit")
         return cls(
             observation_date=parse_iso_date(value["observation_date"]),
             waking_temperature=value.get("waking_temperature"),
             temperature_time=parse_hhmm_time(value["temperature_time"]) if value.get("temperature_time") else None,
             temperature_disturbed=bool(value.get("temperature_disturbed", False)),
+            temperature_unit=TemperatureUnit(tu) if tu else None,
             fluid=FluidObservation.from_dict(fluid_data) if fluid_data else None,
             cervical_position=CervicalPositionObservation.from_dict(cervix_data) if cervix_data else None,
             bleeding=BleedingLevel(value.get("bleeding", BleedingLevel.NONE.value)),
@@ -158,6 +163,45 @@ class CycleSnapshot:
     span_days: int
     logged_days: int
     starts_with_menses: bool
+
+
+@dataclass(slots=True)
+class PriorCycleSummary:
+    """Lightweight summary of a prior cycle, used for Doering rule."""
+    cycle_length: int
+    t_shift_day: int | None  # 1-indexed day of temperature shift
+    confirmed_post_ov: bool  # did the cycle reach S2?
+
+
+@dataclass(slots=True)
+class DayRuleTrace:
+    """Per-day trace showing which rules fired and why."""
+    cycle_day: int  # 1-indexed
+    observation_date: date
+    state: FertilityState
+    state_reason: str
+    temp_celsius: float | None
+    temp_valid: bool
+    temp_disqualify_reason: str | None
+    mucus_level: int | None  # ordinal quality level
+    is_peak_day: bool
+    rules_applied: list[str]
+
+
+@dataclass(slots=True)
+class EvaluationResult:
+    """Full result of evaluating a cycle against Sensiplan rules."""
+    states: list[FertilityState]
+    day_traces: list[DayRuleTrace]
+    t_shift_day: int | None  # 1-indexed cycle day of first high temp
+    coverline_celsius: float | None
+    peak_day: int | None  # 1-indexed cycle day
+    temp_confirmed_day: int | None  # 1-indexed, evening of this day
+    peak_confirmed_day: int | None  # 1-indexed, evening of this day
+    infertile_from_day: int | None  # 1-indexed, first full S2 day
+    disqualifiers: list[str]
+    slow_rise_applied: bool
+    drop_back_applied: bool
 
 
 def build_cycle_history(observations: Iterable[DailyObservation]) -> list[CycleSnapshot]:

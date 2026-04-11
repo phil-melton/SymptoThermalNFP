@@ -1,0 +1,75 @@
+# Early-mucus, late-temperature cycle
+# Tests: Spec SS4.3 - double-check: S2 starts on evening of whichever rule
+#   is satisfied LATER. Here peak confirms before temp.
+
+name: "Early mucus peak, late temperature confirmation"
+description: "Peak day confirms before temp shift; S2 waits for temp rule"
+
+settings:
+  temperature_unit: celsius
+
+prior_cycles: []
+
+observations:
+  - { date: "2024-05-01", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: heavy }
+  - { date: "2024-05-02", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: medium }
+  - { date: "2024-05-03", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry }, bleeding: light }
+  - { date: "2024-05-04", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-05-05", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-05-06", temperature: 36.1, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-05-07", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: creamy } }
+  - { date: "2024-05-08", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: watery } }
+  # Day 9: peak day (last slippery before drying)
+  - { date: "2024-05-09", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: slippery } }
+  # Post-peak drying: days 10, 11, 12
+  - { date: "2024-05-10", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: sticky } }
+  - { date: "2024-05-11", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Peak confirmed evening of day 12 (3 dry days after peak day 9)
+  - { date: "2024-05-12", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  # But temp shift is late! Still low temps.
+  - { date: "2024-05-13", temperature: 36.2, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-05-14", temperature: 36.3, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 15: 1st high. 6 preceding valid: days 9-14.
+  # Max of [36.2, 36.3, 36.2, 36.3, 36.2, 36.3] = 36.3 = coverline
+  # 36.6 > 36.3
+  - { date: "2024-05-15", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 16: 36.7 > 36.3 -- 2nd high
+  - { date: "2024-05-16", temperature: 36.7, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Day 17: 36.6 >= 36.5 -- 3rd high with +0.2. Temp confirmed evening of day 17.
+  - { date: "2024-05-17", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  # Double-check: max(17, 12) = 17. S2 starts day 18.
+  - { date: "2024-05-18", temperature: 36.7, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-05-19", temperature: 36.6, temperature_unit: celsius, fluid: { sensation: dry } }
+  - { date: "2024-05-20", temperature: 36.5, temperature_unit: celsius, fluid: { sensation: dry } }
+
+expected:
+  t_shift_day: 15
+  coverline_celsius: 36.3
+  peak_day: 9
+  temp_confirmed_day: 17
+  peak_confirmed_day: 12
+  infertile_from_day: 18
+  slow_rise_applied: false
+  drop_back_applied: false
+  disqualifiers: []
+  states:
+    - fertile        # day 1
+    - fertile        # day 2
+    - fertile        # day 3
+    - fertile        # day 4
+    - fertile        # day 5
+    - fertile        # day 6
+    - fertile        # day 7
+    - fertile        # day 8
+    - fertile        # day 9 (peak)
+    - fertile        # day 10
+    - fertile        # day 11
+    - fertile        # day 12 (peak confirmed, but waiting for temp)
+    - fertile        # day 13
+    - fertile        # day 14
+    - fertile        # day 15 (1st high)
+    - fertile        # day 16 (2nd high)
+    - fertile        # day 17 (3rd high, temp confirmed evening)
+    - post_ov_infertile  # day 18
+    - post_ov_infertile  # day 19
+    - post_ov_infertile  # day 20

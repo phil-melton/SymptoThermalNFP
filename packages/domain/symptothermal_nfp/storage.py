@@ -263,11 +263,13 @@ class LocalStore:
                 opening=CervixOpening(row["cervix_opening"]),
             )
 
+        tu = row["temperature_unit"] if row["waking_temperature"] is not None else None
         return DailyObservation(
             observation_date=parse_iso_date(row["observation_date"]),
             waking_temperature=row["waking_temperature"],
             temperature_time=parse_hhmm_time(row["temperature_time"]) if row["temperature_time"] else None,
             temperature_disturbed=bool(row["temperature_disturbed"]),
+            temperature_unit=TemperatureUnit(tu) if tu else None,
             fluid=fluid,
             cervical_position=cervical_position,
             bleeding=BleedingLevel(row["bleeding"]),
