@@ -30,6 +30,112 @@ def test_standard_double_check_confirms_phase_3_from_evening() -> None:
     assert cycle.days[9].status == FertilityStatus.ABSOLUTE_INFERTILITY
 
 
+def test_mucus_confirmation_waits_for_third_consecutive_lower_quality_day_after_peak() -> None:
+    start = dt.date(2026, 4, 1)
+    observations = [
+        _observation(
+            start,
+            day,
+            temp=36.4,
+            fluid=_peak() if day == 6 else _sticky() if day in {7, 8} else _dry(),
+            bleeding=BleedingLevel.MEDIUM if day == 1 else BleedingLevel.NONE,
+        )
+        for day in range(1, 9)
+    ]
+
+    report = evaluate_observations(observations)
+    cycle = report.cycles[0]
+
+    assert cycle.peak_day == start + dt.timedelta(days=5)
+    assert cycle.mucus_confirmation_date is None
+    assert cycle.absolute_infertility_start_date is None
+
+
+def test_missing_post_peak_calendar_day_prevents_mucus_confirmation() -> None:
+    start = dt.date(2026, 4, 1)
+    temperatures_by_day = {
+        1: 36.40,
+        2: 36.42,
+        3: 36.41,
+        4: 36.43,
+        5: 36.42,
+        6: 36.44,
+        8: 36.40,
+        9: 36.42,
+        10: 36.41,
+        11: 36.43,
+        12: 36.42,
+        13: 36.44,
+        14: 36.70,
+        15: 36.73,
+        16: 36.80,
+    }
+    observations = [
+        _observation(
+            start,
+            day,
+            temp=temp,
+            fluid=_peak() if day == 6 else _sticky() if day > 6 else _dry(),
+            bleeding=BleedingLevel.MEDIUM if day == 1 else BleedingLevel.NONE,
+        )
+        for day, temp in temperatures_by_day.items()
+    ]
+
+    report = evaluate_observations(observations)
+    cycle = report.cycles[0]
+
+    assert cycle.peak_day == start + dt.timedelta(days=5)
+    assert cycle.mucus_confirmation_date is None
+    assert cycle.temperature_shift is not None
+    assert cycle.temperature_shift.confirmed_date == start + dt.timedelta(days=15)
+    assert cycle.absolute_infertility_start_date is None
+    assert cycle.days[-1].status == FertilityStatus.POTENTIALLY_FERTILE
+
+
+def test_renewed_peak_quality_mucus_moves_peak_day_and_restarts_countdown() -> None:
+    start = dt.date(2026, 4, 1)
+    temperatures = [
+        36.40,
+        36.42,
+        36.43,
+        36.41,
+        36.44,
+        36.45,
+        36.46,
+        36.45,
+        36.75,
+        36.78,
+        36.82,
+    ]
+    observations = []
+    for day, temp in enumerate(temperatures, start=1):
+        if day in {6, 8}:
+            fluid = _peak()
+        elif day in {7, 9, 10, 11}:
+            fluid = _sticky()
+        else:
+            fluid = _dry()
+        observations.append(
+            _observation(
+                start,
+                day,
+                temp=temp,
+                fluid=fluid,
+                bleeding=BleedingLevel.MEDIUM if day == 1 else BleedingLevel.NONE,
+            )
+        )
+
+    report = evaluate_observations(observations)
+    cycle = report.cycles[0]
+
+    assert cycle.peak_day == start + dt.timedelta(days=7)
+    assert cycle.mucus_confirmation_date == start + dt.timedelta(days=10)
+    assert cycle.temperature_shift is not None
+    assert cycle.temperature_shift.confirmed_date == start + dt.timedelta(days=10)
+    assert cycle.absolute_infertility_start_date == start + dt.timedelta(days=10)
+    assert cycle.days[10].status == FertilityStatus.ABSOLUTE_INFERTILITY_FROM_EVENING
+
+
 def test_fourth_day_temperature_exception_confirms_on_fourth_high() -> None:
     start = dt.date(2026, 4, 1)
     observations = _custom_temperature_cycle(

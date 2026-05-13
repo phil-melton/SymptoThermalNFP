@@ -573,10 +573,14 @@ def _find_mucus_confirmation_date(days: list[DailyObservation], peak_day: date |
     if peak_day is None:
         return None
 
+    expected_date = peak_day + timedelta(days=1)
     count = 0
     for observation in days:
         if observation.observation_date <= peak_day:
             continue
+        if observation.observation_date != expected_date:
+            return None
+        expected_date += timedelta(days=1)
         if _is_lower_quality_or_dry(observation.fluid):
             count += 1
             if count == 3:

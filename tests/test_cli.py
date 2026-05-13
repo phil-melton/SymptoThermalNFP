@@ -76,3 +76,59 @@ def test_interpret_command_emits_json_contract(tmp_path, capsys) -> None:
     assert exit_code == 0
     assert payload["rule_pack_version"] == "stm-v1"
     assert payload["cycles"][0]["days"][0]["status"] == "potentially_fertile"
+
+
+def test_interpret_command_shows_mucus_confirmation_column(tmp_path, capsys) -> None:
+    db_path = tmp_path / "local.db"
+    store = LocalStore(db_path)
+    store.initialize()
+    for observation in _cli_stm_cycle(dt.date(2026, 4, 1)):
+        store.upsert_observation(observation, TemperatureUnit.CELSIUS)
+
+    exit_code = main(["--db", str(db_path), "interpret"])
+    output = capsys.readouterr().out
+
+    assert exit_code == 0
+    assert "Mucus Confirmed" in output
+    assert "2026-04-09" in output
+
+
+def _cli_stm_cycle(start: dt.date) -> list[DailyObservation]:
+    observations: list[DailyObservation] = []
+    for day in range(1, 13):
+        if day < 7:
+            temp = 36.40 + ((day % 5) * 0.02)
+        elif day < 10:
+            temp = 36.75 + ((day - 7) * 0.03)
+        else:
+            temp = 36.80
+
+        if day == 6:
+            fluid = FluidObservation(
+                sensation=FluidSensation.SLIPPERY,
+                quantity=FluidQuantity.HIGH,
+                color=MucusColor.CLEAR,
+                texture=MucusTexture.STRETCHY,
+                amount=5,
+                peak_quality=True,
+            )
+        elif day in {7, 8, 9}:
+            fluid = FluidObservation(
+                sensation=FluidSensation.STICKY,
+                quantity=FluidQuantity.LOW,
+                color=MucusColor.CLOUDY,
+                texture=MucusTexture.STICKY,
+                amount=1,
+            )
+        else:
+            fluid = FluidObservation(sensation=FluidSensation.DRY, quantity=FluidQuantity.NONE)
+
+        observations.append(
+            DailyObservation(
+                observation_date=start + dt.timedelta(days=day - 1),
+                waking_temperature=temp,
+                fluid=fluid,
+                bleeding=BleedingLevel.MEDIUM if day == 1 else BleedingLevel.NONE,
+            )
+        )
+    return observations

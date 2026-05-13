@@ -318,6 +318,11 @@ def handle_interpret(args: argparse.Namespace) -> int:
                 cycle.end_date.isoformat(),
                 cycle.peak_day.isoformat() if cycle.peak_day else "-",
                 (
+                    cycle.mucus_confirmation_date.isoformat()
+                    if cycle.mucus_confirmation_date
+                    else "-"
+                ),
+                (
                     cycle.temperature_shift.confirmed_date.isoformat()
                     if cycle.temperature_shift
                     else "-"
@@ -332,7 +337,16 @@ def handle_interpret(args: argparse.Namespace) -> int:
         )
 
     _print_table(
-        headers=["Cycle", "Start", "End", "Peak", "Temp Confirmed", "Phase 3 Evening", "Warnings"],
+        headers=[
+            "Cycle",
+            "Start",
+            "End",
+            "Peak",
+            "Mucus Confirmed",
+            "Temp Confirmed",
+            "Phase 3 Evening",
+            "Warnings",
+        ],
         rows=rows,
     )
     for warning in report.warnings:
