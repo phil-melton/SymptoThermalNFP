@@ -125,6 +125,11 @@ def build_parser() -> argparse.ArgumentParser:
     interpret.add_argument("--json", action="store_true", help="Emit stable JSON contract")
     interpret.set_defaults(handler=handle_interpret)
 
+    plot_cycle_parser = subparsers.add_parser("plot-cycle", help="Evaluate and plot a specific cycle")
+    plot_cycle_parser.add_argument("--cycle-index", type=int, required=True, help="The index of the cycle to plot")
+    plot_cycle_parser.add_argument("--save", help="Path to save the generated image (e.g., cycle.png)")
+    plot_cycle_parser.set_defaults(handler=handle_plot_cycle)
+
     return parser
 
 
@@ -336,6 +341,37 @@ def handle_interpret(args: argparse.Namespace) -> int:
         for warning in cycle.warnings:
             when = f" ({warning.observation_date.isoformat()})" if warning.observation_date else ""
             print(f"cycle {cycle.cycle_index} warning{when}: {warning.code}: {warning.message}")
+    return 0
+
+
+def handle_plot_cycle(args: argparse.Namespace) -> int:
+    store = _store_from_args(args)
+    store.initialize()
+
+    # Find the cycle snapshot for the given index
+    cycles = store.list_cycle_snapshots()
+    target_cycle = None
+    for c in cycles:
+        if c.cycle_index == args.cycle_index:
+            target_cycle = c
+            break
+
+    if not target_cycle:
+        print(f"Cycle {args.cycle_index} not found.")
+        return 1
+
+    # Fetch all observations for the cycle
+    observations = store.list_observations(
+        start_date=target_cycle.start_date.isoformat(),
+        end_date=target_cycle.end_date.isoformat()
+    )
+
+    if not observations:
+        print(f"No observations found for cycle {args.cycle_index}.")
+        return 1
+
+    from .plot import plot_cycle
+    plot_cycle(observations, save_path=args.save)
     return 0
 
 
