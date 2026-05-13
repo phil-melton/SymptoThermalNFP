@@ -69,6 +69,7 @@ The synthetic generator uses fixed seeds and known ground truth rather than down
 
 - Script: `scripts/validate_peak_day_accuracy.py`
 - Results JSON: `peak-day-validation-2026-05-13-results.json`
+- Figure generation notes: `figures/peak-day-validation-2026-05-13/README.md`
 - Statistical seed: `20260513`
 - Statistical synthetic cycle count: `160`
 
