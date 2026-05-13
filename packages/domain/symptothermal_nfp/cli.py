@@ -5,6 +5,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from .interpretation import evaluate_observations
 from .models import AppSettings, CervicalPositionObservation, DailyObservation, FluidObservation, parse_hhmm_time, parse_iso_date
 from .storage import LocalStore
 from .taxonomy import (
@@ -14,6 +15,9 @@ from .taxonomy import (
     CervixOpening,
     FluidQuantity,
     FluidSensation,
+    MucusColor,
+    MucusTexture,
+    RuleContext,
     TemperatureUnit,
 )
 
@@ -39,6 +43,12 @@ def build_parser() -> argparse.ArgumentParser:
     set_settings = subparsers.add_parser("set-settings", help="Update app-level charting settings")
     set_settings.add_argument("--temperature-unit", choices=_enum_values(TemperatureUnit))
     set_settings.add_argument("--wake-time", help="Default wake time in HH:MM format")
+    set_settings.add_argument("--rule-context", choices=_enum_values(RuleContext))
+    set_settings.add_argument(
+        "--transition-cycle-count",
+        type=int,
+        help="Completed transition cycles after hormonal contraception, birth, or miscarriage",
+    )
     track_group = set_settings.add_mutually_exclusive_group()
     track_group.add_argument(
         "--track-cervical-position",
@@ -52,7 +62,22 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_false",
         help="Disable cervical position tracking in entry workflow",
     )
-    set_settings.set_defaults(track_cervical_position=None, handler=handle_set_settings)
+    doering_group = set_settings.add_mutually_exclusive_group()
+    doering_group.add_argument("--use-doering-rule", dest="use_doering_rule", action="store_true")
+    doering_group.add_argument("--no-doering-rule", dest="use_doering_rule", action="store_false")
+    rotzer_group = set_settings.add_mutually_exclusive_group()
+    rotzer_group.add_argument("--use-rotzer-rule", dest="use_rotzer_rule", action="store_true")
+    rotzer_group.add_argument("--no-rotzer-rule", dest="use_rotzer_rule", action="store_false")
+    bip_group = set_settings.add_mutually_exclusive_group()
+    bip_group.add_argument("--enable-bip", dest="bip_enabled", action="store_true")
+    bip_group.add_argument("--disable-bip", dest="bip_enabled", action="store_false")
+    set_settings.set_defaults(
+        track_cervical_position=None,
+        use_doering_rule=None,
+        use_rotzer_rule=None,
+        bip_enabled=None,
+        handler=handle_set_settings,
+    )
 
     show_settings = subparsers.add_parser("show-settings", help="Show current app settings")
     show_settings.set_defaults(handler=handle_show_settings)
@@ -60,6 +85,7 @@ def build_parser() -> argparse.ArgumentParser:
     log_observation = subparsers.add_parser("log-observation", help="Insert or update one daily observation")
     log_observation.add_argument("--date", help="Observation date in YYYY-MM-DD format (defaults to today)")
     log_observation.add_argument("--temperature", type=float, help="Waking temperature value")
+    log_observation.add_argument("--temperature-unit", choices=_enum_values(TemperatureUnit))
     log_observation.add_argument("--temperature-time", help="Time temperature was taken (HH:MM)")
     log_observation.add_argument(
         "--temperature-disturbed",
@@ -68,6 +94,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     log_observation.add_argument("--fluid-sensation", choices=_enum_values(FluidSensation))
     log_observation.add_argument("--fluid-quantity", choices=_enum_values(FluidQuantity))
+    log_observation.add_argument("--fluid-color", choices=_enum_values(MucusColor))
+    log_observation.add_argument("--fluid-texture", choices=_enum_values(MucusTexture))
+    log_observation.add_argument("--fluid-amount", type=int, help="SCAT amount scale from 1 to 5")
     log_observation.add_argument("--fluid-peak", action="store_true")
     log_observation.add_argument("--cervix-height", choices=_enum_values(CervixHeight))
     log_observation.add_argument("--cervix-firmness", choices=_enum_values(CervixFirmness))
@@ -90,6 +119,12 @@ def build_parser() -> argparse.ArgumentParser:
     list_cycles.add_argument("--end", help="Filter end date YYYY-MM-DD")
     list_cycles.set_defaults(handler=handle_list_cycles)
 
+    interpret = subparsers.add_parser("interpret", help="Evaluate observations with the STM rule engine")
+    interpret.add_argument("--start", help="Filter start date YYYY-MM-DD")
+    interpret.add_argument("--end", help="Filter end date YYYY-MM-DD")
+    interpret.add_argument("--json", action="store_true", help="Emit stable JSON contract")
+    interpret.set_defaults(handler=handle_interpret)
+
     return parser
 
 
@@ -107,16 +142,38 @@ def handle_set_settings(args: argparse.Namespace) -> int:
 
     temperature_unit = TemperatureUnit(args.temperature_unit) if args.temperature_unit else existing.temperature_unit
     wake_time = args.wake_time if args.wake_time else existing.default_wake_time
+    rule_context = RuleContext(args.rule_context) if args.rule_context else existing.rule_context
+    transition_cycle_count = (
+        args.transition_cycle_count
+        if args.transition_cycle_count is not None
+        else existing.transition_cycle_count
+    )
     track_cervical_position = (
         args.track_cervical_position
         if args.track_cervical_position is not None
         else existing.track_cervical_position
     )
+    use_doering_rule = (
+        args.use_doering_rule
+        if args.use_doering_rule is not None
+        else existing.use_doering_rule
+    )
+    use_rotzer_rule = (
+        args.use_rotzer_rule
+        if args.use_rotzer_rule is not None
+        else existing.use_rotzer_rule
+    )
+    bip_enabled = args.bip_enabled if args.bip_enabled is not None else existing.bip_enabled
 
     updated = AppSettings(
         temperature_unit=temperature_unit,
         default_wake_time=wake_time,
         track_cervical_position=track_cervical_position,
+        rule_context=rule_context,
+        transition_cycle_count=transition_cycle_count,
+        use_doering_rule=use_doering_rule,
+        use_rotzer_rule=use_rotzer_rule,
+        bip_enabled=bip_enabled,
     )
     store.save_settings(updated)
     print("Settings updated")
@@ -130,6 +187,11 @@ def handle_show_settings(args: argparse.Namespace) -> int:
     print(f"temperature_unit: {settings.temperature_unit.value}")
     print(f"default_wake_time: {settings.default_wake_time}")
     print(f"track_cervical_position: {settings.track_cervical_position}")
+    print(f"rule_context: {settings.rule_context.value}")
+    print(f"transition_cycle_count: {settings.transition_cycle_count}")
+    print(f"use_doering_rule: {settings.use_doering_rule}")
+    print(f"use_rotzer_rule: {settings.use_rotzer_rule}")
+    print(f"bip_enabled: {settings.bip_enabled}")
     return 0
 
 
@@ -146,6 +208,7 @@ def handle_log_observation(args: argparse.Namespace) -> int:
     observation = DailyObservation(
         observation_date=observation_date,
         waking_temperature=args.temperature,
+        temperature_unit=TemperatureUnit(args.temperature_unit) if args.temperature_unit else None,
         temperature_time=temperature_time,
         temperature_disturbed=bool(args.temperature_disturbed),
         fluid=fluid,
@@ -222,19 +285,83 @@ def handle_list_cycles(args: argparse.Namespace) -> int:
     return 0
 
 
+def handle_interpret(args: argparse.Namespace) -> int:
+    store = _store_from_args(args)
+    store.initialize()
+    settings = store.load_settings()
+
+    start = parse_iso_date(args.start).isoformat() if args.start else None
+    end = parse_iso_date(args.end).isoformat() if args.end else None
+
+    observations = store.list_observations(start_date=start, end_date=end)
+    report = evaluate_observations(observations, settings)
+
+    if args.json:
+        print(report.to_json())
+        return 0
+
+    if not report.cycles:
+        print("No observations found")
+        return 0
+
+    rows: list[list[str]] = []
+    for cycle in report.cycles:
+        rows.append(
+            [
+                str(cycle.cycle_index),
+                cycle.start_date.isoformat(),
+                cycle.end_date.isoformat(),
+                cycle.peak_day.isoformat() if cycle.peak_day else "-",
+                (
+                    cycle.temperature_shift.confirmed_date.isoformat()
+                    if cycle.temperature_shift
+                    else "-"
+                ),
+                (
+                    cycle.absolute_infertility_start_date.isoformat()
+                    if cycle.absolute_infertility_start_date
+                    else "-"
+                ),
+                str(len(cycle.warnings)),
+            ]
+        )
+
+    _print_table(
+        headers=["Cycle", "Start", "End", "Peak", "Temp Confirmed", "Phase 3 Evening", "Warnings"],
+        rows=rows,
+    )
+    for warning in report.warnings:
+        print(f"warning: {warning.code}: {warning.message}")
+    for cycle in report.cycles:
+        for warning in cycle.warnings:
+            when = f" ({warning.observation_date.isoformat()})" if warning.observation_date else ""
+            print(f"cycle {cycle.cycle_index} warning{when}: {warning.code}: {warning.message}")
+    return 0
+
+
 def _store_from_args(args: argparse.Namespace) -> LocalStore:
     return LocalStore(Path(args.db))
 
 
 def _build_fluid_observation(args: argparse.Namespace) -> FluidObservation | None:
-    if args.fluid_sensation is None and (args.fluid_quantity is not None or args.fluid_peak):
-        raise ValueError("Provide --fluid-sensation when using --fluid-quantity or --fluid-peak")
+    fluid_parts = [
+        args.fluid_quantity,
+        args.fluid_color,
+        args.fluid_texture,
+        args.fluid_amount,
+        args.fluid_peak,
+    ]
+    if args.fluid_sensation is None and any(part is not None and part is not False for part in fluid_parts):
+        raise ValueError("Provide --fluid-sensation when using fluid detail fields")
     if args.fluid_sensation is None:
         return None
     quantity = FluidQuantity(args.fluid_quantity) if args.fluid_quantity else FluidQuantity.NONE
     return FluidObservation(
         sensation=FluidSensation(args.fluid_sensation),
         quantity=quantity,
+        color=MucusColor(args.fluid_color) if args.fluid_color else MucusColor.NONE,
+        texture=MucusTexture(args.fluid_texture) if args.fluid_texture else MucusTexture.NONE,
+        amount=args.fluid_amount,
         peak_quality=bool(args.fluid_peak),
     )
 

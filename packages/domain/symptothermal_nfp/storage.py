@@ -5,7 +5,15 @@ import sqlite3
 from datetime import UTC, datetime
 from pathlib import Path
 
-from .models import AppSettings, CervicalPositionObservation, DailyObservation, FluidObservation, build_cycle_history, parse_hhmm_time, parse_iso_date
+from .models import (
+    AppSettings,
+    CervicalPositionObservation,
+    DailyObservation,
+    FluidObservation,
+    build_cycle_history,
+    parse_hhmm_time,
+    parse_iso_date,
+)
 from .taxonomy import (
     BleedingLevel,
     CervixFirmness,
@@ -13,10 +21,12 @@ from .taxonomy import (
     CervixOpening,
     FluidQuantity,
     FluidSensation,
+    MucusColor,
+    MucusTexture,
     TemperatureUnit,
 )
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 class LocalStore:
@@ -41,13 +51,21 @@ class LocalStore:
                 row["version"] for row in connection.execute("SELECT version FROM schema_migrations")
             }
 
-            if SCHEMA_VERSION not in applied_versions:
+            if 1 not in applied_versions:
                 self._apply_schema_v1(connection)
                 connection.execute(
                     "INSERT INTO schema_migrations(version, applied_at) VALUES (?, ?)",
-                    (SCHEMA_VERSION, _utc_now_iso()),
+                    (1, _utc_now_iso()),
                 )
-                connection.commit()
+
+            if 2 not in applied_versions:
+                self._apply_schema_v2(connection)
+                connection.execute(
+                    "INSERT INTO schema_migrations(version, applied_at) VALUES (?, ?)",
+                    (2, _utc_now_iso()),
+                )
+
+            connection.commit()
 
     def save_settings(self, settings: AppSettings) -> None:
         payload = json.dumps(settings.as_dict(), sort_keys=True)
@@ -96,6 +114,9 @@ class LocalStore:
                     temperature_disturbed,
                     fluid_sensation,
                     fluid_quantity,
+                    fluid_color,
+                    fluid_texture,
+                    fluid_amount,
                     fluid_peak_quality,
                     cervix_height,
                     cervix_firmness,
@@ -104,7 +125,7 @@ class LocalStore:
                     notes,
                     created_at,
                     updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(observation_date)
                 DO UPDATE SET
                     waking_temperature = excluded.waking_temperature,
@@ -113,6 +134,9 @@ class LocalStore:
                     temperature_disturbed = excluded.temperature_disturbed,
                     fluid_sensation = excluded.fluid_sensation,
                     fluid_quantity = excluded.fluid_quantity,
+                    fluid_color = excluded.fluid_color,
+                    fluid_texture = excluded.fluid_texture,
+                    fluid_amount = excluded.fluid_amount,
                     fluid_peak_quality = excluded.fluid_peak_quality,
                     cervix_height = excluded.cervix_height,
                     cervix_firmness = excluded.cervix_firmness,
@@ -129,6 +153,9 @@ class LocalStore:
                     payload["temperature_disturbed"],
                     payload["fluid_sensation"],
                     payload["fluid_quantity"],
+                    payload["fluid_color"],
+                    payload["fluid_texture"],
+                    payload["fluid_amount"],
                     payload["fluid_peak_quality"],
                     payload["cervix_height"],
                     payload["cervix_firmness"],
@@ -225,6 +252,12 @@ class LocalStore:
         )
 
     @staticmethod
+    def _apply_schema_v2(connection: sqlite3.Connection) -> None:
+        _add_column_if_missing(connection, "observations", "fluid_color", "TEXT")
+        _add_column_if_missing(connection, "observations", "fluid_texture", "TEXT")
+        _add_column_if_missing(connection, "observations", "fluid_amount", "INTEGER")
+
+    @staticmethod
     def _observation_to_db_values(
         observation: DailyObservation,
         temperature_unit: TemperatureUnit,
@@ -232,11 +265,18 @@ class LocalStore:
         return {
             "observation_date": observation.observation_date.isoformat(),
             "waking_temperature": observation.waking_temperature,
-            "temperature_unit": temperature_unit.value if observation.waking_temperature is not None else None,
+            "temperature_unit": (
+                (observation.temperature_unit or temperature_unit).value
+                if observation.waking_temperature is not None
+                else None
+            ),
             "temperature_time": observation.temperature_time.strftime("%H:%M") if observation.temperature_time else None,
             "temperature_disturbed": int(observation.temperature_disturbed),
             "fluid_sensation": observation.fluid.sensation.value if observation.fluid else None,
             "fluid_quantity": observation.fluid.quantity.value if observation.fluid else None,
+            "fluid_color": observation.fluid.color.value if observation.fluid else None,
+            "fluid_texture": observation.fluid.texture.value if observation.fluid else None,
+            "fluid_amount": observation.fluid.amount if observation.fluid else None,
             "fluid_peak_quality": int(observation.fluid.peak_quality) if observation.fluid else 0,
             "cervix_height": observation.cervical_position.height.value if observation.cervical_position else None,
             "cervix_firmness": observation.cervical_position.firmness.value if observation.cervical_position else None,
@@ -252,6 +292,9 @@ class LocalStore:
             fluid = FluidObservation(
                 sensation=FluidSensation(row["fluid_sensation"]),
                 quantity=FluidQuantity(row["fluid_quantity"] or FluidQuantity.NONE.value),
+                color=MucusColor(row["fluid_color"] or MucusColor.NONE.value),
+                texture=MucusTexture(row["fluid_texture"] or MucusTexture.NONE.value),
+                amount=row["fluid_amount"],
                 peak_quality=bool(row["fluid_peak_quality"]),
             )
 
@@ -266,6 +309,7 @@ class LocalStore:
         return DailyObservation(
             observation_date=parse_iso_date(row["observation_date"]),
             waking_temperature=row["waking_temperature"],
+            temperature_unit=TemperatureUnit(row["temperature_unit"]) if row["temperature_unit"] else None,
             temperature_time=parse_hhmm_time(row["temperature_time"]) if row["temperature_time"] else None,
             temperature_disturbed=bool(row["temperature_disturbed"]),
             fluid=fluid,
@@ -277,3 +321,16 @@ class LocalStore:
 
 def _utc_now_iso() -> str:
     return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _add_column_if_missing(
+    connection: sqlite3.Connection,
+    table_name: str,
+    column_name: str,
+    column_definition: str,
+) -> None:
+    columns = {
+        row["name"] for row in connection.execute(f"PRAGMA table_info({table_name})")
+    }
+    if column_name not in columns:
+        connection.execute(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_definition}")

@@ -1,0 +1,5012 @@
+{
+  "cases": [
+    {
+      "case_id": "stat-001",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-01-19",
+      "detected_temperature_confirmed_date": "2026-01-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-01-19",
+      "label": "Statistical synthetic cycle 1",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-002",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-02-28",
+      "detected_temperature_confirmed_date": "2026-03-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-02-28",
+      "label": "Statistical synthetic cycle 2",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-003",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-04-16",
+      "detected_temperature_confirmed_date": "2026-04-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-04-16",
+      "label": "Statistical synthetic cycle 3",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-004",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-05-31",
+      "detected_temperature_confirmed_date": "2026-06-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-05-31",
+      "label": "Statistical synthetic cycle 4",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-005",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-07-14",
+      "detected_temperature_confirmed_date": "2026-07-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-07-14",
+      "label": "Statistical synthetic cycle 5",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-006",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.44,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-09-01",
+      "detected_temperature_confirmed_date": "2026-09-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-09-01",
+      "label": "Statistical synthetic cycle 6",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-007",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-10-09",
+      "detected_temperature_confirmed_date": "2026-10-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-10-09",
+      "label": "Statistical synthetic cycle 7",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-008",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.49,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-11-30",
+      "detected_temperature_confirmed_date": "2026-12-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-11-30",
+      "label": "Statistical synthetic cycle 8",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-009",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.43,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-01-09",
+      "detected_temperature_confirmed_date": "2027-01-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-01-09",
+      "label": "Statistical synthetic cycle 9",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-010",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.51,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-02-28",
+      "detected_temperature_confirmed_date": "2027-03-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-02-28",
+      "label": "Statistical synthetic cycle 10",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-011",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-04-11",
+      "detected_temperature_confirmed_date": "2027-04-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-04-11",
+      "label": "Statistical synthetic cycle 11",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-012",
+      "category": "statistical",
+      "cycle_length": 24,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.5,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-05-25",
+      "detected_temperature_confirmed_date": "2027-05-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-05-25",
+      "label": "Statistical synthetic cycle 12",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-013",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-07-09",
+      "detected_temperature_confirmed_date": "2027-07-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-07-09",
+      "label": "Statistical synthetic cycle 13",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-014",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-08-20",
+      "detected_temperature_confirmed_date": "2027-08-23",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-08-20",
+      "label": "Statistical synthetic cycle 14",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-015",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-10-05",
+      "detected_temperature_confirmed_date": "2027-10-08",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-10-05",
+      "label": "Statistical synthetic cycle 15",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-016",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-11-17",
+      "detected_temperature_confirmed_date": "2027-11-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-11-17",
+      "label": "Statistical synthetic cycle 16",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-017",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-01-03",
+      "detected_temperature_confirmed_date": "2028-01-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-01-03",
+      "label": "Statistical synthetic cycle 17",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-018",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.54,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-02-19",
+      "detected_temperature_confirmed_date": "2028-02-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-02-19",
+      "label": "Statistical synthetic cycle 18",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-019",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.36,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-04-03",
+      "detected_temperature_confirmed_date": "2028-04-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-04-03",
+      "label": "Statistical synthetic cycle 19",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-020",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-05-17",
+      "detected_temperature_confirmed_date": "2028-05-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-05-17",
+      "label": "Statistical synthetic cycle 20",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-021",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-06-28",
+      "detected_temperature_confirmed_date": "2028-07-01",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-06-28",
+      "label": "Statistical synthetic cycle 21",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-022",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.55,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-08-21",
+      "detected_temperature_confirmed_date": "2028-08-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-08-21",
+      "label": "Statistical synthetic cycle 22",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-023",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-09-30",
+      "detected_temperature_confirmed_date": "2028-10-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-09-30",
+      "label": "Statistical synthetic cycle 23",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-024",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-11-11",
+      "detected_temperature_confirmed_date": "2028-11-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-11-11",
+      "label": "Statistical synthetic cycle 24",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-025",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.57,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2028-12-30",
+      "detected_temperature_confirmed_date": "2029-01-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2028-12-30",
+      "label": "Statistical synthetic cycle 25",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-026",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-02-09",
+      "detected_temperature_confirmed_date": "2029-02-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-02-09",
+      "label": "Statistical synthetic cycle 26",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-027",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-03-28",
+      "detected_temperature_confirmed_date": "2029-03-31",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-03-28",
+      "label": "Statistical synthetic cycle 27",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-028",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-05-16",
+      "detected_temperature_confirmed_date": "2029-05-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-05-16",
+      "label": "Statistical synthetic cycle 28",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-029",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-06-30",
+      "detected_temperature_confirmed_date": "2029-07-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-06-30",
+      "label": "Statistical synthetic cycle 29",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-030",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.44,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-08-13",
+      "detected_temperature_confirmed_date": "2029-08-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-08-13",
+      "label": "Statistical synthetic cycle 30",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-031",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-09-30",
+      "detected_temperature_confirmed_date": "2029-10-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-09-30",
+      "label": "Statistical synthetic cycle 31",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-032",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-11-05",
+      "detected_temperature_confirmed_date": "2029-11-08",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-11-05",
+      "label": "Statistical synthetic cycle 32",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-033",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2029-12-26",
+      "detected_temperature_confirmed_date": "2029-12-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2029-12-26",
+      "label": "Statistical synthetic cycle 33",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-034",
+      "category": "statistical",
+      "cycle_length": 24,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.43,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-02-08",
+      "detected_temperature_confirmed_date": "2030-02-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-02-08",
+      "label": "Statistical synthetic cycle 34",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-035",
+      "category": "statistical",
+      "cycle_length": 23,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-03-23",
+      "detected_temperature_confirmed_date": "2030-03-26",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-03-23",
+      "label": "Statistical synthetic cycle 35",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-036",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-05-10",
+      "detected_temperature_confirmed_date": "2030-05-13",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-05-10",
+      "label": "Statistical synthetic cycle 36",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-037",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-06-21",
+      "detected_temperature_confirmed_date": "2030-06-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-06-21",
+      "label": "Statistical synthetic cycle 37",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-038",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-08-11",
+      "detected_temperature_confirmed_date": "2030-08-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-08-11",
+      "label": "Statistical synthetic cycle 38",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-039",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-09-22",
+      "detected_temperature_confirmed_date": "2030-09-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-09-22",
+      "label": "Statistical synthetic cycle 39",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-040",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-11-09",
+      "detected_temperature_confirmed_date": "2030-11-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-11-09",
+      "label": "Statistical synthetic cycle 40",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-041",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2030-12-20",
+      "detected_temperature_confirmed_date": "2030-12-23",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2030-12-20",
+      "label": "Statistical synthetic cycle 41",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-042",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-02-06",
+      "detected_temperature_confirmed_date": "2031-02-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-02-06",
+      "label": "Statistical synthetic cycle 42",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-043",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.5,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-03-20",
+      "detected_temperature_confirmed_date": "2031-03-23",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-03-20",
+      "label": "Statistical synthetic cycle 43",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-044",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-05-01",
+      "detected_temperature_confirmed_date": "2031-05-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-05-01",
+      "label": "Statistical synthetic cycle 44",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-045",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-06-19",
+      "detected_temperature_confirmed_date": "2031-06-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-06-19",
+      "label": "Statistical synthetic cycle 45",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-046",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-08-01",
+      "detected_temperature_confirmed_date": "2031-08-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-08-01",
+      "label": "Statistical synthetic cycle 46",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-047",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-09-18",
+      "detected_temperature_confirmed_date": "2031-09-21",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-09-18",
+      "label": "Statistical synthetic cycle 47",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-048",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.33,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-10-31",
+      "detected_temperature_confirmed_date": "2031-11-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-10-31",
+      "label": "Statistical synthetic cycle 48",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-049",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2031-12-18",
+      "detected_temperature_confirmed_date": "2031-12-21",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2031-12-18",
+      "label": "Statistical synthetic cycle 49",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-050",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-01-27",
+      "detected_temperature_confirmed_date": "2032-01-30",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-01-27",
+      "label": "Statistical synthetic cycle 50",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-051",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-03-13",
+      "detected_temperature_confirmed_date": "2032-03-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-03-13",
+      "label": "Statistical synthetic cycle 51",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-052",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-04-30",
+      "detected_temperature_confirmed_date": "2032-05-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-04-30",
+      "label": "Statistical synthetic cycle 52",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-053",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-06-11",
+      "detected_temperature_confirmed_date": "2032-06-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-06-11",
+      "label": "Statistical synthetic cycle 53",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-054",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.5,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-07-28",
+      "detected_temperature_confirmed_date": "2032-07-31",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-07-28",
+      "label": "Statistical synthetic cycle 54",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-055",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.5,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-09-10",
+      "detected_temperature_confirmed_date": "2032-09-13",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-09-10",
+      "label": "Statistical synthetic cycle 55",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-056",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-10-20",
+      "detected_temperature_confirmed_date": "2032-10-23",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-10-20",
+      "label": "Statistical synthetic cycle 56",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-057",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.51,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2032-12-06",
+      "detected_temperature_confirmed_date": "2032-12-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2032-12-06",
+      "label": "Statistical synthetic cycle 57",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-058",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-01-22",
+      "detected_temperature_confirmed_date": "2033-01-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-01-22",
+      "label": "Statistical synthetic cycle 58",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-059",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-03-08",
+      "detected_temperature_confirmed_date": "2033-03-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-03-08",
+      "label": "Statistical synthetic cycle 59",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-060",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-04-21",
+      "detected_temperature_confirmed_date": "2033-04-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-04-21",
+      "label": "Statistical synthetic cycle 60",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-061",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-06-09",
+      "detected_temperature_confirmed_date": "2033-06-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-06-09",
+      "label": "Statistical synthetic cycle 61",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-062",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.43,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-07-17",
+      "detected_temperature_confirmed_date": "2033-07-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-07-17",
+      "label": "Statistical synthetic cycle 62",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-063",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.28,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-09-05",
+      "detected_temperature_confirmed_date": "2033-09-08",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-09-05",
+      "label": "Statistical synthetic cycle 63",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-064",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-10-21",
+      "detected_temperature_confirmed_date": "2033-10-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-10-21",
+      "label": "Statistical synthetic cycle 64",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-065",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.38,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2033-12-06",
+      "detected_temperature_confirmed_date": "2033-12-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2033-12-06",
+      "label": "Statistical synthetic cycle 65",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-066",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-01-19",
+      "detected_temperature_confirmed_date": "2034-01-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-01-19",
+      "label": "Statistical synthetic cycle 66",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-067",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-03-06",
+      "detected_temperature_confirmed_date": "2034-03-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-03-06",
+      "label": "Statistical synthetic cycle 67",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-068",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-04-16",
+      "detected_temperature_confirmed_date": "2034-04-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-04-16",
+      "label": "Statistical synthetic cycle 68",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-069",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.49,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-05-30",
+      "detected_temperature_confirmed_date": "2034-06-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-05-30",
+      "label": "Statistical synthetic cycle 69",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-070",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-07-20",
+      "detected_temperature_confirmed_date": "2034-07-23",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-07-20",
+      "label": "Statistical synthetic cycle 70",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-071",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-08-30",
+      "detected_temperature_confirmed_date": "2034-09-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-08-30",
+      "label": "Statistical synthetic cycle 71",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-072",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-10-18",
+      "detected_temperature_confirmed_date": "2034-10-21",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-10-18",
+      "label": "Statistical synthetic cycle 72",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-073",
+      "category": "statistical",
+      "cycle_length": 23,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2034-11-27",
+      "detected_temperature_confirmed_date": "2034-11-30",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2034-11-27",
+      "label": "Statistical synthetic cycle 73",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-074",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.49,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-01-12",
+      "detected_temperature_confirmed_date": "2035-01-15",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-01-12",
+      "label": "Statistical synthetic cycle 74",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-075",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-02-27",
+      "detected_temperature_confirmed_date": "2035-03-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-02-27",
+      "label": "Statistical synthetic cycle 75",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-076",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.33,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-04-17",
+      "detected_temperature_confirmed_date": "2035-04-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-04-17",
+      "label": "Statistical synthetic cycle 76",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 19,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-077",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-05-29",
+      "detected_temperature_confirmed_date": "2035-06-01",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-05-29",
+      "label": "Statistical synthetic cycle 77",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-078",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-07-14",
+      "detected_temperature_confirmed_date": "2035-07-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-07-14",
+      "label": "Statistical synthetic cycle 78",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-079",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-08-31",
+      "detected_temperature_confirmed_date": "2035-09-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-08-31",
+      "label": "Statistical synthetic cycle 79",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 20,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-080",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-10-08",
+      "detected_temperature_confirmed_date": "2035-10-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-10-08",
+      "label": "Statistical synthetic cycle 80",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-081",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2035-11-22",
+      "detected_temperature_confirmed_date": "2035-11-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2035-11-22",
+      "label": "Statistical synthetic cycle 81",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-082",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-01-05",
+      "detected_temperature_confirmed_date": "2036-01-08",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-01-05",
+      "label": "Statistical synthetic cycle 82",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-083",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-02-21",
+      "detected_temperature_confirmed_date": "2036-02-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-02-21",
+      "label": "Statistical synthetic cycle 83",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-084",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.32,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-04-09",
+      "detected_temperature_confirmed_date": "2036-04-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-04-09",
+      "label": "Statistical synthetic cycle 84",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-085",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-05-23",
+      "detected_temperature_confirmed_date": "2036-05-26",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-05-23",
+      "label": "Statistical synthetic cycle 85",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-086",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-07-09",
+      "detected_temperature_confirmed_date": "2036-07-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-07-09",
+      "label": "Statistical synthetic cycle 86",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-087",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.38,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-08-25",
+      "detected_temperature_confirmed_date": "2036-08-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-08-25",
+      "label": "Statistical synthetic cycle 87",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 20,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-088",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-10-03",
+      "detected_temperature_confirmed_date": "2036-10-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-10-03",
+      "label": "Statistical synthetic cycle 88",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-089",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-11-14",
+      "detected_temperature_confirmed_date": "2036-11-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-11-14",
+      "label": "Statistical synthetic cycle 89",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-090",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2036-12-28",
+      "detected_temperature_confirmed_date": "2036-12-31",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2036-12-28",
+      "label": "Statistical synthetic cycle 90",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-091",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-02-13",
+      "detected_temperature_confirmed_date": "2037-02-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-02-13",
+      "label": "Statistical synthetic cycle 91",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-092",
+      "category": "statistical",
+      "cycle_length": 36,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.57,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-04-09",
+      "detected_temperature_confirmed_date": "2037-04-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-04-09",
+      "label": "Statistical synthetic cycle 92",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 22,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-093",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.55,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-05-16",
+      "detected_temperature_confirmed_date": "2037-05-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-05-16",
+      "label": "Statistical synthetic cycle 93",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-094",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-07-01",
+      "detected_temperature_confirmed_date": "2037-07-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-07-01",
+      "label": "Statistical synthetic cycle 94",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-095",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-08-14",
+      "detected_temperature_confirmed_date": "2037-08-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-08-14",
+      "label": "Statistical synthetic cycle 95",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-096",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-10-01",
+      "detected_temperature_confirmed_date": "2037-10-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-10-01",
+      "label": "Statistical synthetic cycle 96",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-097",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-11-13",
+      "detected_temperature_confirmed_date": "2037-11-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-11-13",
+      "label": "Statistical synthetic cycle 97",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-098",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2037-12-25",
+      "detected_temperature_confirmed_date": "2037-12-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2037-12-25",
+      "label": "Statistical synthetic cycle 98",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-099",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-02-11",
+      "detected_temperature_confirmed_date": "2038-02-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-02-11",
+      "label": "Statistical synthetic cycle 99",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-100",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-03-26",
+      "detected_temperature_confirmed_date": "2038-03-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-03-26",
+      "label": "Statistical synthetic cycle 100",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-101",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-05-08",
+      "detected_temperature_confirmed_date": "2038-05-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-05-08",
+      "label": "Statistical synthetic cycle 101",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-102",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-06-27",
+      "detected_temperature_confirmed_date": "2038-06-30",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-06-27",
+      "label": "Statistical synthetic cycle 102",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-103",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-08-10",
+      "detected_temperature_confirmed_date": "2038-08-13",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-08-10",
+      "label": "Statistical synthetic cycle 103",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-104",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.46,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-09-21",
+      "detected_temperature_confirmed_date": "2038-09-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-09-21",
+      "label": "Statistical synthetic cycle 104",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-105",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-11-09",
+      "detected_temperature_confirmed_date": "2038-11-12",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-11-09",
+      "label": "Statistical synthetic cycle 105",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-106",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.5,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2038-12-26",
+      "detected_temperature_confirmed_date": "2038-12-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2038-12-26",
+      "label": "Statistical synthetic cycle 106",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-107",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-02-04",
+      "detected_temperature_confirmed_date": "2039-02-07",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-02-04",
+      "label": "Statistical synthetic cycle 107",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-108",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-03-23",
+      "detected_temperature_confirmed_date": "2039-03-26",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-03-23",
+      "label": "Statistical synthetic cycle 108",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-109",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-05-08",
+      "detected_temperature_confirmed_date": "2039-05-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-05-08",
+      "label": "Statistical synthetic cycle 109",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-110",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.36,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-06-26",
+      "detected_temperature_confirmed_date": "2039-06-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-06-26",
+      "label": "Statistical synthetic cycle 110",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 20,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-111",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.28,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-08-05",
+      "detected_temperature_confirmed_date": "2039-08-08",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-08-05",
+      "label": "Statistical synthetic cycle 111",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-112",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.38,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-09-16",
+      "detected_temperature_confirmed_date": "2039-09-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-09-16",
+      "label": "Statistical synthetic cycle 112",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-113",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-11-06",
+      "detected_temperature_confirmed_date": "2039-11-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-11-06",
+      "label": "Statistical synthetic cycle 113",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-114",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2039-12-19",
+      "detected_temperature_confirmed_date": "2039-12-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2039-12-19",
+      "label": "Statistical synthetic cycle 114",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-115",
+      "category": "statistical",
+      "cycle_length": 23,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-02-01",
+      "detected_temperature_confirmed_date": "2040-02-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-02-01",
+      "label": "Statistical synthetic cycle 115",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-116",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-03-17",
+      "detected_temperature_confirmed_date": "2040-03-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-03-17",
+      "label": "Statistical synthetic cycle 116",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-117",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-05-04",
+      "detected_temperature_confirmed_date": "2040-05-07",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-05-04",
+      "label": "Statistical synthetic cycle 117",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-118",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.53,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-06-17",
+      "detected_temperature_confirmed_date": "2040-06-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-06-17",
+      "label": "Statistical synthetic cycle 118",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-119",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-07-31",
+      "detected_temperature_confirmed_date": "2040-08-03",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-07-31",
+      "label": "Statistical synthetic cycle 119",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-120",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.46,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-09-13",
+      "detected_temperature_confirmed_date": "2040-09-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-09-13",
+      "label": "Statistical synthetic cycle 120",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-121",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.33,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-10-28",
+      "detected_temperature_confirmed_date": "2040-10-31",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-10-28",
+      "label": "Statistical synthetic cycle 121",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-122",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.44,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2040-12-14",
+      "detected_temperature_confirmed_date": "2040-12-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2040-12-14",
+      "label": "Statistical synthetic cycle 122",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-123",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.29,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-01-23",
+      "detected_temperature_confirmed_date": "2041-01-26",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-01-23",
+      "label": "Statistical synthetic cycle 123",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-124",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-03-10",
+      "detected_temperature_confirmed_date": "2041-03-13",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-03-10",
+      "label": "Statistical synthetic cycle 124",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-125",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.46,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-04-25",
+      "detected_temperature_confirmed_date": "2041-04-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-04-25",
+      "label": "Statistical synthetic cycle 125",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-126",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.43,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-06-11",
+      "detected_temperature_confirmed_date": "2041-06-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-06-11",
+      "label": "Statistical synthetic cycle 126",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-127",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.38,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-07-30",
+      "detected_temperature_confirmed_date": "2041-08-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-07-30",
+      "label": "Statistical synthetic cycle 127",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 20,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-128",
+      "category": "statistical",
+      "cycle_length": 26,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.36,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-09-08",
+      "detected_temperature_confirmed_date": "2041-09-11",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-09-08",
+      "label": "Statistical synthetic cycle 128",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-129",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.54,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-10-26",
+      "detected_temperature_confirmed_date": "2041-10-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-10-26",
+      "label": "Statistical synthetic cycle 129",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-130",
+      "category": "statistical",
+      "cycle_length": 27,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2041-12-02",
+      "detected_temperature_confirmed_date": "2041-12-05",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2041-12-02",
+      "label": "Statistical synthetic cycle 130",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-131",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.52,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-01-19",
+      "detected_temperature_confirmed_date": "2042-01-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-01-19",
+      "label": "Statistical synthetic cycle 131",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-132",
+      "category": "statistical",
+      "cycle_length": 24,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.38,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-03-03",
+      "detected_temperature_confirmed_date": "2042-03-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-03-03",
+      "label": "Statistical synthetic cycle 132",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-133",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.35,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-04-23",
+      "detected_temperature_confirmed_date": "2042-04-26",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-04-23",
+      "label": "Statistical synthetic cycle 133",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-134",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-06-04",
+      "detected_temperature_confirmed_date": "2042-06-07",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-06-04",
+      "label": "Statistical synthetic cycle 134",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-135",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.3,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-07-18",
+      "detected_temperature_confirmed_date": "2042-07-21",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-07-18",
+      "label": "Statistical synthetic cycle 135",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-136",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-08-29",
+      "detected_temperature_confirmed_date": "2042-09-01",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-08-29",
+      "label": "Statistical synthetic cycle 136",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-137",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.39,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-10-14",
+      "detected_temperature_confirmed_date": "2042-10-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-10-14",
+      "label": "Statistical synthetic cycle 137",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-138",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2042-12-02",
+      "detected_temperature_confirmed_date": "2042-12-05",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2042-12-02",
+      "label": "Statistical synthetic cycle 138",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-139",
+      "category": "statistical",
+      "cycle_length": 33,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.42,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-01-13",
+      "detected_temperature_confirmed_date": "2043-01-16",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-01-13",
+      "label": "Statistical synthetic cycle 139",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-140",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-02-27",
+      "detected_temperature_confirmed_date": "2043-03-02",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-02-27",
+      "label": "Statistical synthetic cycle 140",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 12,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-141",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-04-19",
+      "detected_temperature_confirmed_date": "2043-04-22",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-04-19",
+      "label": "Statistical synthetic cycle 141",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-142",
+      "category": "statistical",
+      "cycle_length": 22,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-05-26",
+      "detected_temperature_confirmed_date": "2043-05-29",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-05-26",
+      "label": "Statistical synthetic cycle 142",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 10,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-143",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-07-15",
+      "detected_temperature_confirmed_date": "2043-07-18",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-07-15",
+      "label": "Statistical synthetic cycle 143",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-144",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.4,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-08-25",
+      "detected_temperature_confirmed_date": "2043-08-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-08-25",
+      "label": "Statistical synthetic cycle 144",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-145",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.51,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-10-11",
+      "detected_temperature_confirmed_date": "2043-10-14",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-10-11",
+      "label": "Statistical synthetic cycle 145",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-146",
+      "category": "statistical",
+      "cycle_length": 31,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.48,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2043-11-25",
+      "detected_temperature_confirmed_date": "2043-11-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2043-11-25",
+      "label": "Statistical synthetic cycle 146",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-147",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-01-07",
+      "detected_temperature_confirmed_date": "2044-01-10",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-01-07",
+      "label": "Statistical synthetic cycle 147",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-148",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.57,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-02-24",
+      "detected_temperature_confirmed_date": "2044-02-27",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-02-24",
+      "label": "Statistical synthetic cycle 148",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-149",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.54,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-04-06",
+      "detected_temperature_confirmed_date": "2044-04-09",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-04-06",
+      "label": "Statistical synthetic cycle 149",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-150",
+      "category": "statistical",
+      "cycle_length": 34,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.46,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-05-25",
+      "detected_temperature_confirmed_date": "2044-05-28",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-05-25",
+      "label": "Statistical synthetic cycle 150",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-151",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.31,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-07-12",
+      "detected_temperature_confirmed_date": "2044-07-15",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-07-12",
+      "label": "Statistical synthetic cycle 151",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-152",
+      "category": "statistical",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-08-21",
+      "detected_temperature_confirmed_date": "2044-08-24",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-08-21",
+      "label": "Statistical synthetic cycle 152",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 13,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-153",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.56,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-10-03",
+      "detected_temperature_confirmed_date": "2044-10-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-10-03",
+      "label": "Statistical synthetic cycle 153",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-154",
+      "category": "statistical",
+      "cycle_length": 32,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.34,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2044-11-17",
+      "detected_temperature_confirmed_date": "2044-11-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2044-11-17",
+      "label": "Statistical synthetic cycle 154",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-155",
+      "category": "statistical",
+      "cycle_length": 25,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.37,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-01-01",
+      "detected_temperature_confirmed_date": "2045-01-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-01-01",
+      "label": "Statistical synthetic cycle 155",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-156",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.44,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-02-22",
+      "detected_temperature_confirmed_date": "2045-02-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-02-22",
+      "label": "Statistical synthetic cycle 156",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-157",
+      "category": "statistical",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.43,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-04-01",
+      "detected_temperature_confirmed_date": "2045-04-04",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-04-01",
+      "label": "Statistical synthetic cycle 157",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 11,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-158",
+      "category": "statistical",
+      "cycle_length": 28,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.33,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-05-22",
+      "detected_temperature_confirmed_date": "2045-05-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-05-22",
+      "label": "Statistical synthetic cycle 158",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 17,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-159",
+      "category": "statistical",
+      "cycle_length": 24,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.47,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-07-04",
+      "detected_temperature_confirmed_date": "2045-07-07",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-07-04",
+      "label": "Statistical synthetic cycle 159",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "stat-160",
+      "category": "statistical",
+      "cycle_length": 35,
+      "delta_days": 0,
+      "description": "Source-shaped ovulatory cycle with Gaussian cycle length, Gaussian mucus Peak Day, physiologic low-phase BBT, and luteal rise.",
+      "detected_coverline_celsius": 36.57,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2045-08-17",
+      "detected_temperature_confirmed_date": "2045-08-20",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2045-08-17",
+      "label": "Statistical synthetic cycle 160",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "repeat-false-peaks",
+      "category": "curveball",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Earlier peak-quality mucus patches dry up, then a later true Peak Day appears.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-09-16",
+      "detected_temperature_confirmed_date": "2026-09-19",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-09-16",
+      "label": "Repeat false peaks before true Peak Day",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 16,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "late-long-cycle",
+      "category": "curveball",
+      "cycle_length": 37,
+      "delta_days": 0,
+      "description": "Long follicular phase with Peak Day much later than calendar-day assumptions.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2026-11-03",
+      "detected_temperature_confirmed_date": "2026-11-06",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-11-03",
+      "label": "Late ovulation in a long cycle",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 24,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "slow-staircase-rise",
+      "category": "exception",
+      "cycle_length": 30,
+      "delta_days": 0,
+      "description": "Third high is above the coverline but below the 0.2 C threshold; fourth high is needed.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": true,
+      "detected_peak_day": "2026-12-14",
+      "detected_temperature_confirmed_date": "2026-12-18",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2026-12-14",
+      "label": "Slow staircase temperature rise",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 15,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "exact-threshold",
+      "category": "exception",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "Third high lands exactly on coverline + 0.2 C and should confirm without day four.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-01-22",
+      "detected_temperature_confirmed_date": "2027-01-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-01-22",
+      "label": "Exact 0.2 C third-high threshold",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "disturbed-high",
+      "category": "exception",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "One of the first three high temperatures is disturbed and cannot be counted.",
+      "detected_coverline_celsius": null,
+      "detected_fourth_day_exception": null,
+      "detected_peak_day": "2027-03-03",
+      "detected_temperature_confirmed_date": null,
+      "detected_temperature_shift": false,
+      "detected_unclear_mucus_exception": null,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-03-03",
+      "label": "Disturbed high temperature blocks confirmation",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "missing-calendar-day",
+      "category": "exception",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "A missing day interrupts the required consecutive 6-low/3-high temperature sequence.",
+      "detected_coverline_celsius": null,
+      "detected_fourth_day_exception": null,
+      "detected_peak_day": "2027-04-12",
+      "detected_temperature_confirmed_date": null,
+      "detected_temperature_shift": false,
+      "detected_unclear_mucus_exception": null,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-04-12",
+      "label": "Missing calendar day blocks temperature confirmation",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "fever-warning",
+      "category": "curveball",
+      "cycle_length": 29,
+      "delta_days": 0,
+      "description": "A later fever-like reading is charted after the true shift and should be warned on.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-05-22",
+      "detected_temperature_confirmed_date": "2027-05-25",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-05-22",
+      "label": "Fever/elevated temperature warning",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 14,
+      "warning_codes": [
+        "elevated_temperature",
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "unclear-no-mucus",
+      "category": "exception",
+      "cycle_length": 29,
+      "delta_days": null,
+      "description": "No mucus observations are recorded; Peak Day should stay empty and the unclear-mucus exception should be used for BBT.",
+      "detected_coverline_celsius": 36.45,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": null,
+      "detected_temperature_confirmed_date": "2027-07-05",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": true,
+      "expectation_check_passed": true,
+      "expected_peak_day": null,
+      "label": "No mucus observations, temperature-only confirmation",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "temperature_shift_confirmed",
+        "temperature_unclear_mucus_exception"
+      ],
+      "true_peak_cycle_day": null,
+      "warning_codes": [
+        "bbt_without_mucus",
+        "insufficient_cycle_history",
+        "unclear_mucus_peak"
+      ]
+    },
+    {
+      "case_id": "premature-temp-rise",
+      "category": "exception",
+      "cycle_length": 24,
+      "delta_days": 0,
+      "description": "A valid-looking early rise occurs before a later Peak Day; highs after Peak Day should be used.",
+      "detected_coverline_celsius": 36.41,
+      "detected_fourth_day_exception": false,
+      "detected_peak_day": "2027-08-14",
+      "detected_temperature_confirmed_date": "2027-08-17",
+      "detected_temperature_shift": true,
+      "detected_unclear_mucus_exception": false,
+      "expectation_check_passed": true,
+      "expected_peak_day": "2027-08-14",
+      "label": "Premature pre-Peak temperature rise is ignored",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "double_check_confirmed",
+        "mucus_countdown_confirmed",
+        "physical_phase1_override",
+        "premature_temperature_rise_ignored",
+        "temperature_shift_confirmed"
+      ],
+      "true_peak_cycle_day": 18,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    },
+    {
+      "case_id": "breakthrough-bleeding",
+      "category": "curveball",
+      "cycle_length": 21,
+      "delta_days": null,
+      "description": "Internal medium bleeding appears without a confirmed temperature shift.",
+      "detected_coverline_celsius": null,
+      "detected_fourth_day_exception": null,
+      "detected_peak_day": null,
+      "detected_temperature_confirmed_date": null,
+      "detected_temperature_shift": false,
+      "detected_unclear_mucus_exception": null,
+      "expectation_check_passed": true,
+      "expected_peak_day": null,
+      "label": "Breakthrough bleeding without ovulatory shift",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history"
+      ],
+      "true_peak_cycle_day": null,
+      "warning_codes": [
+        "insufficient_cycle_history",
+        "possible_anovulatory_bleeding"
+      ]
+    },
+    {
+      "case_id": "open-ended-peak",
+      "category": "exception",
+      "cycle_length": 15,
+      "delta_days": null,
+      "description": "The chart ends on a peak-quality day, so there is no later lower-quality day to lock Peak Day.",
+      "detected_coverline_celsius": null,
+      "detected_fourth_day_exception": null,
+      "detected_peak_day": null,
+      "detected_temperature_confirmed_date": null,
+      "detected_temperature_shift": false,
+      "detected_unclear_mucus_exception": null,
+      "expectation_check_passed": true,
+      "expected_peak_day": null,
+      "label": "Peak-quality mucus at chart end is not locked",
+      "peak_check_passed": true,
+      "status": "pass",
+      "trace_codes": [
+        "calendar_no_phase1_history",
+        "physical_phase1_override"
+      ],
+      "true_peak_cycle_day": null,
+      "warning_codes": [
+        "insufficient_cycle_history"
+      ]
+    }
+  ],
+  "metrics": {
+    "case_count": 171,
+    "exact_peak_count": 168,
+    "exact_peak_rate": 1.0,
+    "exception_expectations": 3,
+    "exception_hits": 3,
+    "expectation_failure_count": 0,
+    "failed_case_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "generated_at": "2026-05-13T11:38:17",
+    "no_peak_expected_count": 3,
+    "peak_expected_count": 168,
+    "run_id": "peak-day-validation-2026-05-13",
+    "statistical_cycle_count": 160,
+    "statistical_cycle_length_mean": 28.55,
+    "statistical_cycle_length_sd": 3.15,
+    "statistical_peak_day_mean": 14.7,
+    "statistical_peak_day_sd": 2.63,
+    "trace_expectations": 2,
+    "trace_hits": 2,
+    "true_no_peak_count": 3,
+    "true_no_peak_rate": 1.0,
+    "warning_expectations": 4,
+    "warning_hits": 4,
+    "within_1_day_count": 168,
+    "within_1_day_rate": 1.0,
+    "within_4_day_count": 168,
+    "within_4_day_rate": 1.0
+  },
+  "sources": [
+    {
+      "label": "WHO multicentre ovulation method study",
+      "note": "Cycle length mean 28.5 days, SD 3.18; mucus Peak Day mean day 15, SD 2.6.",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0015028216474789"
+    },
+    {
+      "label": "Fehring 2002 Peak Day study",
+      "note": "Peak Day was within +/-4 days of estimated ovulation in 97.8% of compared cycles.",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0010782402003554"
+    },
+    {
+      "label": "NCBI StatPearls BBT physiology",
+      "note": "Follicular BBT commonly sits around 97.0-98.0 F; luteal rise is about 0.5-1.0 F.",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK546686/"
+    },
+    {
+      "label": "Frank-Herrmann/Sensiplan paper",
+      "note": "Temperature rise rule: three highs over previous six, with the last high 0.2 C above the previous six.",
+      "url": "https://www.sensiplan.nl/wp-content/uploads/2025/02/Natural-conception-rates-in-subfertile-couples-following-fertility-awareness-training.pdf"
+    },
+    {
+      "label": "Bailey and Marshall luteal phase summary",
+      "note": "Hyperthermic phase commonly around 10-13 days across shorter to typical cycle lengths.",
+      "url": "https://www.cambridge.org/core/journals/journal-of-biosocial-science/article/abs/relationship-of-the-postovulatory-phase-of-the-menstrual-cycle-to-total-cycle-length/EE433FCF1C8148952B669B01300F09E5"
+    }
+  ]
+}

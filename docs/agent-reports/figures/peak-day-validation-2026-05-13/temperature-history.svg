@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img"><style>text{font-family:Arial,Helvetica,sans-serif}</style>
+<text x="24.0" y="32.0" font-size="20.0" fill="#1f2937" text-anchor="start" font-weight="700">Temperature History: Representative Source-Shaped Cycle</text>
+<text x="24.0" y="56.0" font-size="13.0" fill="#5c6670" text-anchor="start" font-weight="400">Statistical synthetic cycle 1 (stat-001)</text>
+<rect x="62.0" y="84.0" width="856.0" height="260.0" rx="0.0" fill="#ffffff" stroke="#d6dde5" />
+<line x1="62.0" y1="344.0" x2="918.0" y2="344.0" stroke="#eef2f6" />
+<text x="14.0" y="348.0" font-size="11.0" fill="#5c6670" text-anchor="start" font-weight="400">36.27 C</text>
+<line x1="62.0" y1="277.0" x2="918.0" y2="277.0" stroke="#eef2f6" />
+<text x="14.0" y="281.0" font-size="11.0" fill="#5c6670" text-anchor="start" font-weight="400">36.44 C</text>
+<line x1="62.0" y1="214.0" x2="918.0" y2="214.0" stroke="#eef2f6" />
+<text x="14.0" y="218.0" font-size="11.0" fill="#5c6670" text-anchor="start" font-weight="400">36.60 C</text>
+<line x1="62.0" y1="147.0" x2="918.0" y2="147.0" stroke="#eef2f6" />
+<text x="14.0" y="151.0" font-size="11.0" fill="#5c6670" text-anchor="start" font-weight="400">36.77 C</text>
+<line x1="62.0" y1="84.0" x2="918.0" y2="84.0" stroke="#eef2f6" />
+<text x="14.0" y="88.0" font-size="11.0" fill="#5c6670" text-anchor="start" font-weight="400">36.93 C</text>
+<line x1="62.0" y1="284.9" x2="918.0" y2="284.9" stroke="#9a6b00" stroke-dasharray="5 4" />
+<text x="780.0" y="276.9" font-size="12.0" fill="#8a5c00" text-anchor="start" font-weight="400">coverline 36.42 C</text>
+<polyline points="62.0,304.6 88.8,296.7 115.5,288.8 142.2,292.8 169.0,284.9 195.8,312.5 222.5,304.6 249.2,296.7 276.0,288.8 302.8,292.8 329.5,284.9 356.2,312.5 383.0,304.6 409.8,296.7 436.5,288.8 463.2,292.8 490.0,284.9 516.8,312.5 543.5,304.6 570.2,257.3 597.0,225.8 623.8,147.0 650.5,123.4 677.2,119.5 704.0,115.5 730.8,123.4 757.5,119.5 784.2,115.5 811.0,123.4 837.8,119.5 864.5,115.5 891.2,123.4 918.0,119.5" fill="none" stroke="#1f7a83" stroke-width="3" stroke-linejoin="round" />
+<circle cx="62.0" cy="304.6" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="88.8" cy="296.7" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="115.5" cy="288.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="142.2" cy="292.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="169.0" cy="284.9" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="195.8" cy="312.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="222.5" cy="304.6" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="249.2" cy="296.7" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="276.0" cy="288.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="302.8" cy="292.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="329.5" cy="284.9" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="356.2" cy="312.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="383.0" cy="304.6" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="409.8" cy="296.7" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="436.5" cy="288.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="463.2" cy="292.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="490.0" cy="284.9" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="516.8" cy="312.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="543.5" cy="304.6" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="570.2" cy="257.3" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="597.0" cy="225.8" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="623.8" cy="147.0" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="650.5" cy="123.4" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="677.2" cy="119.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="704.0" cy="115.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="730.8" cy="123.4" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="757.5" cy="119.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="784.2" cy="115.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="811.0" cy="123.4" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="837.8" cy="119.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="864.5" cy="115.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="891.2" cy="123.4" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<circle cx="918.0" cy="119.5" r="3.4" fill="#ffffff" stroke="#1f7a83" stroke-width="2.0" />
+<line x1="543.5" y1="84.0" x2="543.5" y2="344.0" stroke="#7b2cbf" stroke-dasharray="5 4" />
+<text x="548.5" y="336.0" font-size="11.0" fill="#6f2da8" text-anchor="start" font-weight="400">expected Peak</text>
+<line x1="543.5" y1="84.0" x2="543.5" y2="344.0" stroke="#c2410c" stroke-dasharray="2 4" />
+<text x="548.5" y="98.0" font-size="11.0" fill="#c2410c" text-anchor="start" font-weight="400">detected Peak</text>
+<line x1="623.8" y1="84.0" x2="623.8" y2="344.0" stroke="#3155a4" stroke-dasharray="3 5" />
+<text x="629.8" y="104.0" font-size="12.0" fill="#3155a4" text-anchor="start" font-weight="400">temp confirmed</text>
+<line x1="62.0" y1="344.0" x2="918.0" y2="344.0" stroke="#aeb8c2" />
+<line x1="62.0" y1="84.0" x2="62.0" y2="344.0" stroke="#aeb8c2" />
+<line x1="62.0" y1="344.0" x2="62.0" y2="350.0" stroke="#aeb8c2" />
+<text x="62.0" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">1</text>
+<line x1="169.0" y1="344.0" x2="169.0" y2="350.0" stroke="#aeb8c2" />
+<text x="169.0" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">5</text>
+<line x1="302.8" y1="344.0" x2="302.8" y2="350.0" stroke="#aeb8c2" />
+<text x="302.8" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">10</text>
+<line x1="436.5" y1="344.0" x2="436.5" y2="350.0" stroke="#aeb8c2" />
+<text x="436.5" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">15</text>
+<line x1="570.2" y1="344.0" x2="570.2" y2="350.0" stroke="#aeb8c2" />
+<text x="570.2" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">20</text>
+<line x1="704.0" y1="344.0" x2="704.0" y2="350.0" stroke="#aeb8c2" />
+<text x="704.0" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">25</text>
+<line x1="837.8" y1="344.0" x2="837.8" y2="350.0" stroke="#aeb8c2" />
+<text x="837.8" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">30</text>
+<line x1="918.0" y1="344.0" x2="918.0" y2="350.0" stroke="#aeb8c2" />
+<text x="918.0" y="366.0" font-size="11.0" fill="#5c6670" text-anchor="middle" font-weight="400">33</text>
+<text x="490.0" y="387.0" font-size="12.0" fill="#5c6670" text-anchor="middle" font-weight="400">cycle day</text>
+<text x="62.0" y="392.0" font-size="12.0" fill="#5c6670" text-anchor="start" font-weight="400">Orange points are disturbed readings excluded from BBT confirmation.</text>
+</svg>

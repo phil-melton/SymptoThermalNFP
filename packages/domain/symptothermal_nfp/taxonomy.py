@@ -15,6 +15,14 @@ class TemperatureUnit(StringEnum):
     FAHRENHEIT = "fahrenheit"
 
 
+class RuleContext(StringEnum):
+    STANDARD = "standard"
+    POST_HORMONAL = "post_hormonal"
+    POSTPARTUM = "postpartum"
+    POST_MISCARRIAGE = "post_miscarriage"
+    DELAYED_FERTILITY = "delayed_fertility"
+
+
 class FluidSensation(StringEnum):
     DRY = "dry"
     STICKY = "sticky"
@@ -28,6 +36,24 @@ class FluidQuantity(StringEnum):
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
+
+
+class MucusColor(StringEnum):
+    NONE = "none"
+    CLOUDY = "cloudy"
+    WHITE = "white"
+    YELLOW = "yellow"
+    CLEAR = "clear"
+
+
+class MucusTexture(StringEnum):
+    NONE = "none"
+    STICKY = "sticky"
+    TACKY = "tacky"
+    CRUMBLY = "crumbly"
+    CREAMY = "creamy"
+    STRETCHY = "stretchy"
+    SLIPPERY = "slippery"
 
 
 class BleedingLevel(StringEnum):

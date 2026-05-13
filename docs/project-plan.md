@@ -4,6 +4,10 @@
 
 This document captures the current implementation plan for a local-first, privacy-first, open-source fertility awareness tracker based on the Sympto-Thermal Method. It is intended as a handoff document for future implementation work.
 
+Implementation note: the Python domain now includes an on-demand STM rule engine
+(`stm-v1`), SQLite schema v2 support for richer mucus observations, and CLI JSON
+output for future app/browser integration.
+
 ## Product Goal
 
 Build a free, open-source competitor to PeakDay that supports Sympto-Thermal fertility awareness charting with a conservative, explainable interpretation engine.

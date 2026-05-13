@@ -1,5 +1,17 @@
 """Core domain and persistence package for SymptoThermalNFP."""
 
+from .interpretation import (
+    CycleInterpretation,
+    CyclePhase,
+    DailyInterpretation,
+    FertilityStatus,
+    InterpretationReport,
+    InterpretationWarning,
+    RuleTrace,
+    TemperatureShift,
+    WarningSeverity,
+    evaluate_observations,
+)
 from .models import (
     AppSettings,
     CervicalPositionObservation,
@@ -16,6 +28,9 @@ from .taxonomy import (
     CervixOpening,
     FluidQuantity,
     FluidSensation,
+    MucusColor,
+    MucusTexture,
+    RuleContext,
     TemperatureUnit,
 )
 
@@ -23,15 +38,28 @@ __all__ = [
     "AppSettings",
     "BleedingLevel",
     "CervicalPositionObservation",
+    "CycleInterpretation",
+    "CyclePhase",
     "CervixFirmness",
     "CervixHeight",
     "CervixOpening",
     "CycleSnapshot",
+    "DailyInterpretation",
     "DailyObservation",
+    "FertilityStatus",
     "FluidObservation",
     "FluidQuantity",
     "FluidSensation",
+    "InterpretationReport",
+    "InterpretationWarning",
     "LocalStore",
+    "MucusColor",
+    "MucusTexture",
+    "RuleContext",
+    "RuleTrace",
     "TemperatureUnit",
+    "TemperatureShift",
+    "WarningSeverity",
     "build_cycle_history",
+    "evaluate_observations",
 ]
