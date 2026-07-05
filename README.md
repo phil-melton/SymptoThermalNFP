@@ -1,19 +1,44 @@
 # SymptoThermalNFP
 
-Python-first domain, local persistence, and conservative symptothermal
-interpretation are now in place.
+Python-first domain, a browser UI with Excel-backed persistence, and
+conservative symptothermal interpretation are now in place.
 
-## What Is Implemented In This Stage
+## What Is Implemented
 
 1. Domain models for daily observations and settings.
 2. Symptom taxonomy enums for temperature, fluid, bleeding, and cervical signs.
-3. Local SQLite persistence with migration tracking.
-4. Conservative STM interpretation with BBT 3-over-6, Peak Day, Phase 1,
+3. Conservative STM interpretation with BBT 3-over-6, Peak Day, Phase 1,
    BIP, transition-context warnings, and luteal-phase warnings.
-5. CLI commands for fast daily logging, history review, settings, and
-   interpretation.
-6. JSON interpretation output for future browser/mobile wiring.
-7. Automated tests for domain, storage, CLI, and interpretation behavior.
+4. A Flask web UI: interactive BBT cycle chart with daily fertility status
+   bands, daily logging form, settings, and observation history.
+5. Excel (.xlsx) as the tracking data store, with workbook upload (merge or
+   replace), download, and a blank template — plus SQLite persistence and a
+   CLI from earlier stages.
+6. JSON interpretation output at `/api/interpretation` and `/api/observations`.
+7. Automated tests for domain, storage, Excel import/export, the web app, and
+   day-by-day fertile-window determination scenarios.
+
+## Web UI Quick Start
+
+```bash
+pip install -e .[dev]
+symptothermal-web            # opens on http://127.0.0.1:5000
+```
+
+All data is tracked in an Excel workbook (`data/symptothermal.xlsx` by
+default; override with `SYMPTOTHERMAL_XLSX=/path/to/file.xlsx`). The file has
+an `Observations` sheet (one row per day) and a `Settings` sheet, so it can be
+edited directly in Excel and re-uploaded through the UI. `SYMPTOTHERMAL_HOST`
+and `SYMPTOTHERMAL_PORT` configure the bind address.
+
+From the browser you can:
+
+- log daily temperature, mucus, bleeding, cervix, and notes;
+- see the cycle chart with coverline, Peak Day, and per-day fertility bands;
+- upload an .xlsx workbook (merge or replace) — invalid rows are reported and
+  skipped, valid rows import; friendly header aliases like `Day`, `Temp`,
+  `Sensation` are accepted;
+- download the current data file or a blank template.
 
 ## Repository Shape
 
