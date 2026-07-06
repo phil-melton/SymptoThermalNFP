@@ -2,17 +2,20 @@ from __future__ import annotations
 
 import io
 import os
+import secrets
 from datetime import date
 from pathlib import Path
 
 from flask import (
     Flask,
+    abort,
     flash,
     jsonify,
     redirect,
     render_template,
     request,
     send_file,
+    session,
     url_for,
 )
 
@@ -52,7 +55,10 @@ STATUS_LABELS = {
 
 def create_app(data_path: str | Path | None = None) -> Flask:
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = os.environ.get("SYMPTOTHERMAL_SECRET", "symptothermal-local")
+    # A random per-process key by default (sessions only hold flashes and the
+    # CSRF token, so losing them on restart is harmless). Set
+    # SYMPTOTHERMAL_SECRET for a stable key across restarts.
+    app.config["SECRET_KEY"] = os.environ.get("SYMPTOTHERMAL_SECRET") or secrets.token_hex(32)
     app.config["MAX_CONTENT_LENGTH"] = 8 * 1024 * 1024  # uploads are small workbooks
 
     resolved = Path(
@@ -62,6 +68,24 @@ def create_app(data_path: str | Path | None = None) -> Flask:
     app.config["DATA_PATH"] = resolved
     store = ExcelStore(resolved)
     store.initialize()
+
+    def csrf_token() -> str:
+        token = session.get("csrf_token")
+        if not token:
+            token = secrets.token_hex(16)
+            session["csrf_token"] = token
+        return token
+
+    app.jinja_env.globals["csrf_token"] = csrf_token
+
+    @app.before_request
+    def check_csrf():
+        if request.method != "POST":
+            return
+        expected = session.get("csrf_token")
+        provided = request.form.get("csrf_token")
+        if not expected or not provided or not secrets.compare_digest(expected, provided):
+            abort(400, description="Invalid or missing CSRF token; reload the page and try again.")
 
     def load_state():
         observations = store.load_observations()

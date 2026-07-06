@@ -28,8 +28,25 @@ def client(data_path):
     return app.test_client()
 
 
+CSRF = "test-csrf-token"
+
+
+def _with_csrf(client, data) -> dict:
+    """Prime the session CSRF token and return form data that includes it."""
+    with client.session_transaction() as sess:
+        sess["csrf_token"] = CSRF
+    payload = dict(data or {})
+    payload["csrf_token"] = CSRF
+    return payload
+
+
+def _post(client, url, data=None, **kwargs):
+    return client.post(url, data=_with_csrf(client, data), **kwargs)
+
+
 def _upload(client, payload: bytes, *, mode: str = "merge", filename: str = "upload.xlsx"):
-    return client.post(
+    return _post(
+        client,
         "/upload",
         data={"workbook": (io.BytesIO(payload), filename), "mode": mode},
         content_type="multipart/form-data",
@@ -52,7 +69,8 @@ def test_index_renders_empty_state(client) -> None:
 
 
 def test_log_observation_via_form(client, data_path) -> None:
-    response = client.post(
+    response = _post(
+        client,
         "/observations",
         data={
             "date": "2026-03-01",
@@ -82,7 +100,8 @@ def test_log_observation_via_form(client, data_path) -> None:
 
 def test_log_observation_form_updates_existing_day(client, data_path) -> None:
     for temp in ("36.40", "36.80"):
-        client.post(
+        _post(
+            client,
             "/observations",
             data={"date": "2026-03-01", "temperature": temp, "temperature_unit": "celsius", "bleeding": "none"},
             follow_redirects=True,
@@ -93,7 +112,8 @@ def test_log_observation_form_updates_existing_day(client, data_path) -> None:
 
 
 def test_invalid_form_shows_error_and_saves_nothing(client, data_path) -> None:
-    response = client.post(
+    response = _post(
+        client,
         "/observations",
         data={"date": "2026-03-01", "temperature": "abc", "bleeding": "none"},
         follow_redirects=True,
@@ -103,20 +123,22 @@ def test_invalid_form_shows_error_and_saves_nothing(client, data_path) -> None:
 
 
 def test_delete_observation(client, data_path) -> None:
-    client.post(
+    _post(
+        client,
         "/observations",
         data={"date": "2026-03-01", "temperature": "36.5", "temperature_unit": "celsius", "bleeding": "none"},
     )
-    response = client.post("/observations/2026-03-01/delete", follow_redirects=True)
+    response = _post(client, "/observations/2026-03-01/delete", follow_redirects=True)
     assert "Deleted observation for 2026-03-01" in response.get_data(as_text=True)
     assert ExcelStore(data_path).load_observations() == []
 
-    response = client.post("/observations/2026-03-01/delete", follow_redirects=True)
+    response = _post(client, "/observations/2026-03-01/delete", follow_redirects=True)
     assert "No observation found" in response.get_data(as_text=True)
 
 
 def test_settings_form_round_trip(client, data_path) -> None:
-    response = client.post(
+    response = _post(
+        client,
         "/settings",
         data={
             "temperature_unit": "fahrenheit",
@@ -147,7 +169,8 @@ def test_upload_excel_merge(client, data_path) -> None:
 
 
 def test_upload_excel_replace_mode(client, data_path) -> None:
-    client.post(
+    _post(
+        client,
         "/observations",
         data={"date": "2020-01-01", "temperature": "36.5", "temperature_unit": "celsius", "bleeding": "none"},
     )
@@ -164,7 +187,7 @@ def test_upload_rejects_non_workbook(client, data_path) -> None:
 
 
 def test_upload_without_file_flashes_error(client) -> None:
-    response = client.post("/upload", data={"mode": "merge"}, follow_redirects=True)
+    response = _post(client, "/upload", data={"mode": "merge"}, follow_redirects=True)
     assert "Choose an .xlsx file" in response.get_data(as_text=True)
 
 
@@ -188,7 +211,8 @@ def test_upload_reports_skipped_rows(client, data_path) -> None:
 
 
 def test_download_returns_current_workbook(client) -> None:
-    client.post(
+    _post(
+        client,
         "/observations",
         data={"date": "2026-03-01", "temperature": "36.5", "temperature_unit": "celsius", "bleeding": "none"},
     )
@@ -256,7 +280,8 @@ def test_index_renders_chart_payload_and_history(client) -> None:
 
 def test_data_file_persists_across_app_restarts(data_path) -> None:
     first = create_app(data_path).test_client()
-    first.post(
+    _post(
+        first,
         "/observations",
         data={"date": "2026-03-01", "temperature": "36.5", "temperature_unit": "celsius", "bleeding": "none"},
     )
@@ -264,3 +289,52 @@ def test_data_file_persists_across_app_restarts(data_path) -> None:
     second = create_app(data_path).test_client()
     response = second.get("/api/observations")
     assert len(response.json) == 1
+
+
+def test_post_without_csrf_token_is_rejected(client, data_path) -> None:
+    response = client.post(
+        "/observations",
+        data={"date": "2026-03-01", "temperature": "36.5", "temperature_unit": "celsius", "bleeding": "none"},
+    )
+    assert response.status_code == 400
+    assert ExcelStore(data_path).load_observations() == []
+
+
+def test_post_with_wrong_csrf_token_is_rejected(client, data_path) -> None:
+    with client.session_transaction() as sess:
+        sess["csrf_token"] = "real-token"
+    response = client.post(
+        "/observations",
+        data={"date": "2026-03-01", "temperature": "36.5", "csrf_token": "forged", "bleeding": "none"},
+    )
+    assert response.status_code == 400
+    assert ExcelStore(data_path).load_observations() == []
+
+
+def test_forms_embed_csrf_token_that_the_server_accepts(client, data_path) -> None:
+    page = client.get("/").get_data(as_text=True)
+    assert 'name="csrf_token"' in page
+    marker = 'name="csrf_token" value="'
+    start = page.index(marker) + len(marker)
+    token = page[start : page.index('"', start)]
+
+    response = client.post(
+        "/observations",
+        data={
+            "date": "2026-03-01",
+            "temperature": "36.5",
+            "temperature_unit": "celsius",
+            "bleeding": "none",
+            "csrf_token": token,
+        },
+        follow_redirects=True,
+    )
+    assert "Logged observation for 2026-03-01" in response.get_data(as_text=True)
+    assert len(ExcelStore(data_path).load_observations()) == 1
+
+
+def test_index_shows_disclaimer(client) -> None:
+    page = client.get("/").get_data(as_text=True)
+    assert "Disclaimer" in page
+    assert "AI-generated" in page
+    assert "not medical advice" in page.lower()

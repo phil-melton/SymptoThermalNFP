@@ -3,6 +3,16 @@
 Python-first domain, a browser UI with Excel-backed persistence, and
 conservative symptothermal interpretation are now in place.
 
+> **⚠️ Disclaimer**
+>
+> This project is predominantly AI-generated code. The symptothermal rule
+> implementation has **not** been verified by an independent qualified
+> professional — it has only been reviewed by someone who took a class on
+> natural family planning. It is not medical advice and must not be relied on
+> as your sole method of avoiding or achieving pregnancy. Consult a certified
+> NFP/FABM instructor or a healthcare provider before acting on anything this
+> software tells you.
+
 ## What Is Implemented
 
 1. Domain models for daily observations and settings.
@@ -30,6 +40,12 @@ default; override with `SYMPTOTHERMAL_XLSX=/path/to/file.xlsx`). The file has
 an `Observations` sheet (one row per day) and a `Settings` sheet, so it can be
 edited directly in Excel and re-uploaded through the UI. `SYMPTOTHERMAL_HOST`
 and `SYMPTOTHERMAL_PORT` configure the bind address.
+
+Saves are crash-safe: each write goes to a temp file that atomically replaces
+the workbook, and the previous version is kept alongside it as
+`<name>.xlsx.bak` — if an import or edit goes wrong, rename the `.bak` file
+back to recover. All POST forms are CSRF-protected; the session secret is
+random per process by default, or set `SYMPTOTHERMAL_SECRET` for a stable one.
 
 From the browser you can:
 

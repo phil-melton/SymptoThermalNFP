@@ -281,3 +281,64 @@ def test_read_observations_sorts_by_date() -> None:
 def test_invalid_import_mode_raises(store) -> None:
     with pytest.raises(ValueError, match="merge"):
         store.import_workbook(b"irrelevant", mode="overwrite")
+
+
+def test_write_keeps_rolling_backup_of_previous_version(store) -> None:
+    store.upsert_observation(DailyObservation(observation_date=START, waking_temperature=36.4))
+    store.upsert_observation(DailyObservation(observation_date=START, waking_temperature=36.9))
+
+    assert store.backup_path.exists()
+    backup, errors = read_observations(load_workbook(io.BytesIO(store.backup_path.read_bytes())))
+    assert not errors
+    # The backup holds the version before the last write.
+    assert len(backup) == 1
+    assert backup[0].waking_temperature == 36.4
+    # A destructive replace-import still leaves the previous data recoverable.
+    store.import_workbook(
+        _workbook_bytes([["2027-01-01", 36.5, "celsius"]], ["date", "temperature", "temperature_unit"]),
+        mode="replace",
+    )
+    backup, _ = read_observations(load_workbook(io.BytesIO(store.backup_path.read_bytes())))
+    assert backup[0].observation_date == START
+    assert backup[0].waking_temperature == 36.9
+
+
+def test_write_leaves_no_temp_file_behind(store) -> None:
+    store.upsert_observation(DailyObservation(observation_date=START, waking_temperature=36.4))
+    leftovers = [p.name for p in store.path.parent.iterdir() if p.suffix == ".tmp"]
+    assert leftovers == []
+
+
+def test_failed_save_preserves_original_file(store, monkeypatch) -> None:
+    store.upsert_observation(DailyObservation(observation_date=START, waking_temperature=36.4))
+
+    def boom(*args, **kwargs):
+        raise OSError("disk full")
+
+    monkeypatch.setattr("symptothermal_nfp.excel_store.os.replace", boom)
+    with pytest.raises(OSError):
+        store.upsert_observation(DailyObservation(observation_date=START, waking_temperature=37.0))
+    monkeypatch.undo()
+
+    # The original file is intact and still readable.
+    assert store.load_observations()[0].waking_temperature == 36.4
+    assert not store.path.with_name(store.path.name + ".tmp").exists()
+
+
+def test_concurrent_upserts_do_not_lose_writes(store) -> None:
+    import threading
+
+    days = [START + dt.timedelta(days=offset) for offset in range(12)]
+    threads = [
+        threading.Thread(
+            target=store.upsert_observation,
+            args=(DailyObservation(observation_date=day, waking_temperature=36.4),),
+        )
+        for day in days
+    ]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    assert len(store.load_observations()) == len(days)

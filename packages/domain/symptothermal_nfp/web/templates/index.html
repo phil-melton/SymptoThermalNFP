@@ -71,6 +71,15 @@
   }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   @media (max-width: 820px) { .grid-2 { grid-template-columns: 1fr; } }
+  .disclaimer {
+    background: rgba(250,178,25,0.14);
+    border: 1px solid rgba(250,178,25,0.55);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--text-primary);
+  }
   .flash { padding: 10px 14px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; }
   .flash.success { background: var(--flash-ok-bg); color: var(--flash-ok); }
   .flash.error { background: var(--flash-err-bg); color: var(--flash-err); }
@@ -129,6 +138,14 @@
 <main>
   <h1>SymptoThermalNFP</h1>
   <p class="subtitle">Local symptothermal fertility charting — your data lives in an Excel workbook you can upload, edit, and download.</p>
+
+  <div class="disclaimer" role="note">
+    <strong>⚠️ Disclaimer:</strong> This app is predominantly AI-generated code. Its symptothermal
+    rules have <strong>not</strong> been verified by an independent qualified professional — only
+    reviewed by someone who took a class on natural family planning. It is not medical advice and
+    must not be your sole basis for avoiding or achieving pregnancy; consult a certified NFP
+    instructor or healthcare provider.
+  </div>
 
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% for category, message in messages %}
@@ -204,6 +221,7 @@
     <section class="card" id="log">
       <h2>Log a day</h2>
       <form method="post" action="{{ url_for('add_observation') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="form-row-3">
           <div>
             <label for="f-date">Date</label>
@@ -308,6 +326,7 @@
         <a class="btn secondary" href="{{ url_for('download_excel') }}">Download data (.xlsx)</a>
         <a class="btn secondary" href="{{ url_for('download_template') }}">Blank template</a>
         <form method="post" action="{{ url_for('upload_excel') }}" enctype="multipart/form-data" style="margin-top:16px">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <label for="f-upload">Upload workbook (.xlsx)</label>
           <input id="f-upload" type="file" name="workbook" accept=".xlsx" required>
           <div class="checks">
@@ -321,6 +340,7 @@
       <section class="card" id="settings">
         <h2>Settings</h2>
         <form method="post" action="{{ url_for('update_settings') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <div class="form-row">
             <div>
               <label for="s-unit">Temperature unit</label>
@@ -395,6 +415,7 @@
             <td>
               <form method="post" action="{{ url_for('delete_observation', observation_date=iso) }}"
                     onsubmit="return confirm('Delete observation for {{ iso }}?')">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button class="danger-link" type="submit">delete</button>
               </form>
             </td>

@@ -10,6 +10,9 @@ files in Excel/LibreOffice and upload them:
 from __future__ import annotations
 
 import io
+import os
+import shutil
+import threading
 from dataclasses import dataclass, field
 from datetime import date, datetime, time
 from pathlib import Path
@@ -134,15 +137,26 @@ class ExcelStore:
 
     The .xlsx file at ``path`` is the single source of truth: every write
     rewrites the workbook, so the file stays openable in Excel at all times.
+
+    Writes are crash-safe: each save goes to a temp file that atomically
+    replaces the data file, and the previous version is kept as a rolling
+    ``.bak`` sibling. Mutations are serialized with an in-process lock so
+    concurrent requests cannot interleave read-modify-write cycles.
     """
 
     def __init__(self, path: str | Path) -> None:
         self.path = Path(path)
+        self._lock = threading.RLock()
+
+    @property
+    def backup_path(self) -> Path:
+        return self.path.with_name(self.path.name + ".bak")
 
     def initialize(self) -> None:
-        if not self.path.exists():
-            self.path.parent.mkdir(parents=True, exist_ok=True)
-            self._write(observations=[], settings=AppSettings())
+        with self._lock:
+            if not self.path.exists():
+                self.path.parent.mkdir(parents=True, exist_ok=True)
+                self._write(observations=[], settings=AppSettings())
 
     def load_observations(self) -> list[DailyObservation]:
         if not self.path.exists():
@@ -161,28 +175,33 @@ class ExcelStore:
         return read_settings(workbook) or AppSettings()
 
     def save_settings(self, settings: AppSettings) -> None:
-        self._write(observations=self._existing_observations(), settings=settings)
+        with self._lock:
+            self._write(observations=self._existing_observations(), settings=settings)
 
     def upsert_observation(self, observation: DailyObservation) -> bool:
         """Insert or replace the observation for its date. Returns True if replaced."""
-        observations = self._existing_observations()
-        replaced = any(
-            item.observation_date == observation.observation_date for item in observations
-        )
-        observations = [
-            item for item in observations if item.observation_date != observation.observation_date
-        ]
-        observations.append(observation)
-        self._write(observations=observations, settings=self.load_settings())
-        return replaced
+        with self._lock:
+            observations = self._existing_observations()
+            replaced = any(
+                item.observation_date == observation.observation_date for item in observations
+            )
+            observations = [
+                item
+                for item in observations
+                if item.observation_date != observation.observation_date
+            ]
+            observations.append(observation)
+            self._write(observations=observations, settings=self.load_settings())
+            return replaced
 
     def delete_observation(self, observation_date: date) -> bool:
-        observations = self._existing_observations()
-        remaining = [item for item in observations if item.observation_date != observation_date]
-        if len(remaining) == len(observations):
-            return False
-        self._write(observations=remaining, settings=self.load_settings())
-        return True
+        with self._lock:
+            observations = self._existing_observations()
+            remaining = [item for item in observations if item.observation_date != observation_date]
+            if len(remaining) == len(observations):
+                return False
+            self._write(observations=remaining, settings=self.load_settings())
+            return True
 
     def import_workbook(
         self,
@@ -203,14 +222,15 @@ class ExcelStore:
         incoming, errors = read_observations(workbook)
         incoming_settings = read_settings(workbook)
 
-        existing = [] if mode == "replace" else self._existing_observations()
-        by_date = {item.observation_date: item for item in existing}
-        replaced = sum(1 for item in incoming if item.observation_date in by_date)
-        for item in incoming:
-            by_date[item.observation_date] = item
+        with self._lock:
+            existing = [] if mode == "replace" else self._existing_observations()
+            by_date = {item.observation_date: item for item in existing}
+            replaced = sum(1 for item in incoming if item.observation_date in by_date)
+            for item in incoming:
+                by_date[item.observation_date] = item
 
-        settings = incoming_settings or self.load_settings()
-        self._write(observations=list(by_date.values()), settings=settings)
+            settings = incoming_settings or self.load_settings()
+            self._write(observations=list(by_date.values()), settings=settings)
         return ImportResult(
             imported=len(incoming),
             replaced=replaced,
@@ -227,7 +247,14 @@ class ExcelStore:
 
     def _write(self, *, observations: Iterable[DailyObservation], settings: AppSettings) -> None:
         workbook = build_workbook(observations, settings)
-        workbook.save(self.path)
+        temp_path = self.path.with_name(self.path.name + ".tmp")
+        workbook.save(temp_path)
+        try:
+            if self.path.exists():
+                shutil.copy2(self.path, self.backup_path)
+            os.replace(temp_path, self.path)
+        finally:
+            temp_path.unlink(missing_ok=True)
 
 
 def build_workbook(
