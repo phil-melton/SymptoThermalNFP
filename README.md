@@ -30,7 +30,7 @@ conservative symptothermal interpretation are now in place.
 
 ## Web UI Quick Start
 
-```bash
+```Shell
 pip install -e .[dev]
 symptothermal-web            # opens on http://127.0.0.1:5000
 ```
@@ -78,13 +78,11 @@ tests/
    ```bash
    pip install -e .[dev]
    ```
-
 3. Initialize local data store:
 
    ```bash
    symptothermal init-db
    ```
-
 4. Set baseline settings:
 
    ```bash
@@ -94,13 +92,11 @@ tests/
    Optional rule context flags include `--rule-context post_hormonal`,
    `--transition-cycle-count 2`, `--use-doering-rule`,
    `--use-rotzer-rule`, and `--enable-bip`.
-
 5. Log a daily observation:
 
    ```bash
    symptothermal log-observation --date 2026-04-06 --temperature 36.45 --temperature-time 06:22 --fluid-sensation watery --fluid-quantity high --fluid-color clear --fluid-texture stretchy --fluid-amount 5 --bleeding none --notes "Felt well-rested"
    ```
-
 6. View observations, cycle history, and interpretation:
 
    ```bash
