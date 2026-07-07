@@ -110,11 +110,11 @@ def create_app(data_path: str | Path | None = None) -> Flask:
             for cycle in report_dict.get("cycles", [])
             for day in cycle.get("days", [])
         }
+        observations_list = sorted(observations, key=lambda item: item.observation_date, reverse=True)
         return render_template(
             "index.html",
-            observations=sorted(
-                observations, key=lambda item: item.observation_date, reverse=True
-            ),
+            observations=observations_list,
+            observations_json=[item.as_dict() for item in observations_list],
             settings=settings,
             report=report_dict,
             today_info=today_info,

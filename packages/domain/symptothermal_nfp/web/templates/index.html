@@ -321,13 +321,13 @@
         <h2>Excel data file</h2>
         <p class="muted" style="margin-top:0">
           All data is stored in <code>{{ config['DATA_PATH'].name if config.get('DATA_PATH') else 'symptothermal.xlsx' }}</code>.
-          Download it to edit or back up, and upload a workbook to import observations.
+          Download it to edit or back up, and upload an Excel file of dates, temps, and observations to import data.
         </p>
         <a class="btn secondary" href="{{ url_for('download_excel') }}">Download data (.xlsx)</a>
         <a class="btn secondary" href="{{ url_for('download_template') }}">Blank template</a>
         <form method="post" action="{{ url_for('upload_excel') }}" enctype="multipart/form-data" style="margin-top:16px">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <label for="f-upload">Upload workbook (.xlsx)</label>
+          <label for="f-upload">Upload Excel file of dates, temps, and observations (.xlsx)</label>
           <input id="f-upload" type="file" name="workbook" accept=".xlsx" required>
           <div class="checks">
             <label><input type="radio" name="mode" value="merge" checked> Merge into existing data</label>
@@ -413,8 +413,9 @@
             <td>{{ status_labels.get(day_status.get(iso), day_status.get(iso)) or '—' }}</td>
             <td>{{ observation.notes or '—' }}</td>
             <td>
+              <button class="danger-link" type="button" style="color:var(--series-1); margin-right:8px" onclick="editObservation('{{ iso }}')">edit</button>
               <form method="post" action="{{ url_for('delete_observation', observation_date=iso) }}"
-                    onsubmit="return confirm('Delete observation for {{ iso }}?')">
+                    style="display:inline" onsubmit="return confirm('Delete observation for {{ iso }}?')">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button class="danger-link" type="submit">delete</button>
               </form>
@@ -438,6 +439,48 @@
 <script>
   const CHART = {{ chart | tojson }};
   const STATUS_LABELS = {{ status_labels | tojson }};
+  const OBSERVATIONS = {{ observations_json | tojson | safe }};
+
+  function editObservation(isoDate) {
+    const obs = OBSERVATIONS.find(o => o.observation_date === isoDate);
+    if (!obs) return;
+
+    document.getElementById('f-date').value = obs.observation_date;
+    document.getElementById('f-temp').value = obs.waking_temperature ?? '';
+    if (obs.temperature_unit) document.getElementById('f-unit').value = obs.temperature_unit;
+    document.getElementById('f-time').value = (obs.temperature_time || '').substring(0, 5);
+    document.getElementById('f-bleeding').value = obs.bleeding || 'none';
+
+    if (obs.fluid) {
+      document.getElementById('f-sensation').value = obs.fluid.sensation === 'dry' ? '' : obs.fluid.sensation;
+      document.getElementById('f-quantity').value = obs.fluid.quantity || 'none';
+      document.getElementById('f-color').value = obs.fluid.color || 'none';
+      document.getElementById('f-texture').value = obs.fluid.texture || 'none';
+      document.querySelector('input[name="peak_quality"]').checked = obs.fluid.peak_quality || false;
+    } else {
+      document.getElementById('f-sensation').value = '';
+      document.getElementById('f-quantity').value = 'none';
+      document.getElementById('f-color').value = 'none';
+      document.getElementById('f-texture').value = 'none';
+      document.querySelector('input[name="peak_quality"]').checked = false;
+    }
+
+    const heightEl = document.getElementById('f-height');
+    if (heightEl && obs.cervical_position) {
+      document.getElementById('f-height').value = obs.cervical_position.height || '';
+      document.getElementById('f-firm').value = obs.cervical_position.firmness || '';
+      document.getElementById('f-open').value = obs.cervical_position.opening || '';
+    } else if (heightEl) {
+      document.getElementById('f-height').value = '';
+      document.getElementById('f-firm').value = '';
+      document.getElementById('f-open').value = '';
+    }
+
+    document.getElementById('f-notes').value = obs.notes || '';
+    document.querySelector('input[name="temperature_disturbed"]').checked = obs.temperature_disturbed || false;
+
+    document.getElementById('log').scrollIntoView({ behavior: 'smooth' });
+  }
 
   const BAND_VARS = {
     potentially_fertile: "--band-fertile",
