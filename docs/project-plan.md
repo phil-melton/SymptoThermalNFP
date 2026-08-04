@@ -8,6 +8,11 @@ Implementation note: the Python domain now includes an on-demand STM rule engine
 (`stm-v1`), SQLite schema v2 support for richer mucus observations, and CLI JSON
 output for future app/browser integration.
 
+Direction update (2026-08-04): the primary interface is now a computer-first,
+local web app served by the Python package. It uses the canonical Python rule
+engine and SQLite store directly. The Expo client remains an optional prototype,
+not the main delivery target.
+
 ## Product Goal
 
 Build a free, open-source competitor to PeakDay that supports Sympto-Thermal fertility awareness charting with a conservative, explainable interpretation engine.
@@ -287,8 +292,8 @@ Recommended order:
 
 The implementation path is intentionally narrow:
 
-1. Build a local-first mobile app first.
+1. Build a local-first computer interface first.
 2. Keep data on-device.
 3. Add encryption locally before any network architecture.
 4. Implement a conservative, explainable sympto-thermal rule engine.
-5. Treat browser support and sync as later expansion work, not current blockers.
+5. Keep mobile packaging and sync as later expansion work, not current blockers.

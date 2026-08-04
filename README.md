@@ -1,12 +1,12 @@
 # SymptoThermalNFP
 
-Python-first domain, local persistence, and conservative symptothermal
-interpretation are now in place.
+Python-first domain, local persistence, conservative symptothermal
+interpretation, and a computer-first local web interface are now in place.
 
-An offline Expo/React Native client is also available in `apps/mobile`. It
-provides onboarding, quick morning/evening charting, plain-language fertility
-feedback, confirmation progress, cycle charts, history, and on-device SQLite
-persistence.
+The primary user interface runs in a desktop browser while keeping data in the
+local SQLite database. It provides onboarding, quick morning/evening charting,
+plain-language fertility feedback, confirmation progress, cycle charts, and
+history. No account, cloud backend, or analytics are required.
 
 ## What Is Implemented In This Stage
 
@@ -19,7 +19,7 @@ persistence.
    interpretation.
 6. JSON interpretation output for future browser/mobile wiring.
 7. Automated tests for domain, storage, CLI, and interpretation behavior.
-8. Mobile-first Today, Chart, and History workflows.
+8. Desktop-first Today, Chart, and History workflows.
 
 ## Repository Shape
 
@@ -75,6 +75,14 @@ tests/
    symptothermal interpret --json
    ```
 
+7. Open the computer interface:
+
+   ```bash
+   symptothermal web
+   ```
+
+   The app opens at `http://127.0.0.1:8765/`. Data stays in `data/local.db`.
+
 ## Interpretation Contract
 
 The reusable Python API is:
@@ -91,13 +99,14 @@ payload = report.as_dict()
 warnings, rule traces, user-facing feedback, and structured confirmation
 progress. Results are calculated on demand and are not persisted.
 
-## Mobile Quick Start
+## Desktop Interface
 
 ```bash
-cd apps/mobile
-pnpm install
-pnpm start
+symptothermal web
 ```
 
-The mobile client stores observations locally in SQLite. See
-`apps/mobile/README.md` for implemented workflows and safety scope.
+Use `symptothermal web --no-open` to start without opening a browser, or
+`symptothermal --db path/to/chart.db web` to select a different local database.
+
+The earlier Expo implementation remains in `apps/mobile` as an optional
+prototype. It is not the primary product surface.

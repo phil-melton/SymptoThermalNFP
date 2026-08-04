@@ -1,6 +1,8 @@
-# Mobile App
+# Mobile Prototype
 
-Offline Expo/React Native charting client for the `stm-v1` symptothermal rule pack.
+Optional Expo/React Native prototype for the `stm-v1` rule pack. The primary
+product surface is now the computer-first local web interface started with
+`symptothermal web`.
 
 ## Implemented UX
 

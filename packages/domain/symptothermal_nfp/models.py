@@ -166,6 +166,7 @@ class AppSettings:
     use_rotzer_rule: bool = False
     bip_enabled: bool = False
     tracking_goal: TrackingGoal = TrackingGoal.UNDERSTAND_CYCLE
+    setup_complete: bool = False
 
     def __post_init__(self) -> None:
         parse_hhmm_time(self.default_wake_time)
@@ -183,6 +184,7 @@ class AppSettings:
             "use_rotzer_rule": self.use_rotzer_rule,
             "bip_enabled": self.bip_enabled,
             "tracking_goal": self.tracking_goal.value,
+            "setup_complete": self.setup_complete,
         }
 
     @classmethod
@@ -199,6 +201,7 @@ class AppSettings:
             tracking_goal=TrackingGoal(
                 value.get("tracking_goal", TrackingGoal.UNDERSTAND_CYCLE.value)
             ),
+            setup_complete=bool(value.get("setup_complete", False)),
         )
 
 

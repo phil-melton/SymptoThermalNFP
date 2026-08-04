@@ -140,6 +140,12 @@ def build_parser() -> argparse.ArgumentParser:
     plot_cycle_parser.add_argument("--save", help="Path to save the generated image (e.g., cycle.png)")
     plot_cycle_parser.set_defaults(handler=handle_plot_cycle)
 
+    web_parser = subparsers.add_parser("web", help="Run the local desktop web app")
+    web_parser.add_argument("--host", default="127.0.0.1", help="Local interface to bind")
+    web_parser.add_argument("--port", type=int, default=8765, help="Local port to bind")
+    web_parser.add_argument("--no-open", action="store_true", help="Do not open the browser automatically")
+    web_parser.set_defaults(handler=handle_web)
+
     return parser
 
 
@@ -191,6 +197,7 @@ def handle_set_settings(args: argparse.Namespace) -> int:
         use_rotzer_rule=use_rotzer_rule,
         bip_enabled=bip_enabled,
         tracking_goal=tracking_goal,
+        setup_complete=existing.setup_complete,
     )
     store.save_settings(updated)
     print("Settings updated")
@@ -210,6 +217,7 @@ def handle_show_settings(args: argparse.Namespace) -> int:
     print(f"use_rotzer_rule: {settings.use_rotzer_rule}")
     print(f"bip_enabled: {settings.bip_enabled}")
     print(f"tracking_goal: {settings.tracking_goal.value}")
+    print(f"setup_complete: {settings.setup_complete}")
     return 0
 
 
@@ -403,6 +411,18 @@ def handle_plot_cycle(args: argparse.Namespace) -> int:
 
     from .plot import plot_cycle
     plot_cycle(observations, save_path=args.save, settings=settings)
+    return 0
+
+
+def handle_web(args: argparse.Namespace) -> int:
+    from .web import serve_desktop_app
+
+    serve_desktop_app(
+        args.db,
+        host=args.host,
+        port=args.port,
+        open_browser=not args.no_open,
+    )
     return 0
 
 

@@ -38,6 +38,7 @@ def test_settings_round_trip(tmp_path) -> None:
         use_rotzer_rule=True,
         bip_enabled=True,
         tracking_goal=TrackingGoal.AVOID_PREGNANCY,
+        setup_complete=True,
     )
 
     store.save_settings(expected)
