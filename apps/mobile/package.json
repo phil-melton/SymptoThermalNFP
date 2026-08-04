@@ -1,0 +1,24 @@
+{
+  "name": "symptothermal-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test:domain": "tsc -p tsconfig.tests.json && node .test-build/tests/domain.test.js"
+  },
+  "dependencies": {
+    "expo": "^57.0.0",
+    "expo-sqlite": "^57.0.0",
+    "react": "19.2.3",
+    "react-native": "0.86.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

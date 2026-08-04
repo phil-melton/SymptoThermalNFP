@@ -3,6 +3,11 @@
 Python-first domain, local persistence, and conservative symptothermal
 interpretation are now in place.
 
+An offline Expo/React Native client is also available in `apps/mobile`. It
+provides onboarding, quick morning/evening charting, plain-language fertility
+feedback, confirmation progress, cycle charts, history, and on-device SQLite
+persistence.
+
 ## What Is Implemented In This Stage
 
 1. Domain models for daily observations and settings.
@@ -14,6 +19,7 @@ interpretation are now in place.
    interpretation.
 6. JSON interpretation output for future browser/mobile wiring.
 7. Automated tests for domain, storage, CLI, and interpretation behavior.
+8. Mobile-first Today, Chart, and History workflows.
 
 ## Repository Shape
 
@@ -82,5 +88,16 @@ payload = report.as_dict()
 
 `symptothermal interpret --json` emits the same stable payload with
 `rule_pack_version`, cycle-level confirmations, daily fertility statuses,
-warnings, and rule traces. Results are calculated on demand and are not
-persisted.
+warnings, rule traces, user-facing feedback, and structured confirmation
+progress. Results are calculated on demand and are not persisted.
+
+## Mobile Quick Start
+
+```bash
+cd apps/mobile
+pnpm install
+pnpm start
+```
+
+The mobile client stores observations locally in SQLite. See
+`apps/mobile/README.md` for implemented workflows and safety scope.

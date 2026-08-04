@@ -23,10 +23,11 @@ from .taxonomy import (
     FluidSensation,
     MucusColor,
     MucusTexture,
+    TemperatureDisturbance,
     TemperatureUnit,
 )
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 
 class LocalStore:
@@ -63,6 +64,13 @@ class LocalStore:
                 connection.execute(
                     "INSERT INTO schema_migrations(version, applied_at) VALUES (?, ?)",
                     (2, _utc_now_iso()),
+                )
+
+            if 3 not in applied_versions:
+                self._apply_schema_v3(connection)
+                connection.execute(
+                    "INSERT INTO schema_migrations(version, applied_at) VALUES (?, ?)",
+                    (3, _utc_now_iso()),
                 )
 
             connection.commit()
@@ -112,6 +120,7 @@ class LocalStore:
                     temperature_unit,
                     temperature_time,
                     temperature_disturbed,
+                    temperature_disturbances_json,
                     fluid_sensation,
                     fluid_quantity,
                     fluid_color,
@@ -125,13 +134,14 @@ class LocalStore:
                     notes,
                     created_at,
                     updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(observation_date)
                 DO UPDATE SET
                     waking_temperature = excluded.waking_temperature,
                     temperature_unit = excluded.temperature_unit,
                     temperature_time = excluded.temperature_time,
                     temperature_disturbed = excluded.temperature_disturbed,
+                    temperature_disturbances_json = excluded.temperature_disturbances_json,
                     fluid_sensation = excluded.fluid_sensation,
                     fluid_quantity = excluded.fluid_quantity,
                     fluid_color = excluded.fluid_color,
@@ -151,6 +161,7 @@ class LocalStore:
                     payload["temperature_unit"],
                     payload["temperature_time"],
                     payload["temperature_disturbed"],
+                    payload["temperature_disturbances_json"],
                     payload["fluid_sensation"],
                     payload["fluid_quantity"],
                     payload["fluid_color"],
@@ -258,6 +269,15 @@ class LocalStore:
         _add_column_if_missing(connection, "observations", "fluid_amount", "INTEGER")
 
     @staticmethod
+    def _apply_schema_v3(connection: sqlite3.Connection) -> None:
+        _add_column_if_missing(
+            connection,
+            "observations",
+            "temperature_disturbances_json",
+            "TEXT NOT NULL DEFAULT '[]'",
+        )
+
+    @staticmethod
     def _observation_to_db_values(
         observation: DailyObservation,
         temperature_unit: TemperatureUnit,
@@ -272,6 +292,9 @@ class LocalStore:
             ),
             "temperature_time": observation.temperature_time.strftime("%H:%M") if observation.temperature_time else None,
             "temperature_disturbed": int(observation.temperature_disturbed),
+            "temperature_disturbances_json": json.dumps(
+                [item.value for item in observation.temperature_disturbances]
+            ),
             "fluid_sensation": observation.fluid.sensation.value if observation.fluid else None,
             "fluid_quantity": observation.fluid.quantity.value if observation.fluid else None,
             "fluid_color": observation.fluid.color.value if observation.fluid else None,
@@ -312,6 +335,7 @@ class LocalStore:
             temperature_unit=TemperatureUnit(row["temperature_unit"]) if row["temperature_unit"] else None,
             temperature_time=parse_hhmm_time(row["temperature_time"]) if row["temperature_time"] else None,
             temperature_disturbed=bool(row["temperature_disturbed"]),
+            temperature_disturbances=_temperature_disturbances_from_row(row),
             fluid=fluid,
             cervical_position=cervical_position,
             bleeding=BleedingLevel(row["bleeding"]),
@@ -321,6 +345,14 @@ class LocalStore:
 
 def _utc_now_iso() -> str:
     return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _temperature_disturbances_from_row(row: sqlite3.Row) -> list[TemperatureDisturbance]:
+    try:
+        values = json.loads(row["temperature_disturbances_json"] or "[]")
+    except (json.JSONDecodeError, IndexError):
+        return []
+    return [TemperatureDisturbance(item) for item in values]
 
 
 def _add_column_if_missing(

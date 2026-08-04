@@ -1,6 +1,10 @@
 import datetime as dt
 
-from symptothermal_nfp.interpretation import FertilityStatus, evaluate_observations
+from symptothermal_nfp.interpretation import (
+    FertilityStatus,
+    UserFertilityLabel,
+    evaluate_observations,
+)
 from symptothermal_nfp.models import AppSettings, DailyObservation, FluidObservation
 from symptothermal_nfp.taxonomy import (
     BleedingLevel,
@@ -10,6 +14,7 @@ from symptothermal_nfp.taxonomy import (
     MucusTexture,
     RuleContext,
     TemperatureUnit,
+    TrackingGoal,
 )
 
 
@@ -377,6 +382,47 @@ def test_interpretation_report_serializes_as_json_contract() -> None:
     assert payload["rule_pack_version"] == "stm-v1"
     assert payload["cycles"][0]["temperature_shift"]["confirmed_date"] == "2026-04-09"
     assert payload["cycles"][0]["days"][0]["status"] == "potentially_fertile"
+    assert payload["cycles"][0]["days"][0]["feedback"]["headline"] == "Fertility possible"
+    assert payload["cycles"][0]["days"][0]["progress"]["mucus_lower_quality_required"] == 3
+
+
+def test_missing_mucus_does_not_count_as_dry_in_peak_countdown() -> None:
+    observations = _stm_cycle(dt.date(2026, 4, 1), length=12, shift_day=7)
+    observations[6].fluid = None
+
+    report = evaluate_observations(observations)
+    cycle = report.cycles[0]
+
+    assert cycle.mucus_confirmation_date is None
+    assert cycle.absolute_infertility_start_date is None
+    assert cycle.days[-1].progress is not None
+    assert cycle.days[-1].progress.mucus_confirmed is False
+
+
+def test_feedback_uses_plain_language_and_tracking_goal() -> None:
+    start = dt.date(2026, 4, 1)
+    no_signs = evaluate_observations([DailyObservation(observation_date=start)])
+    incomplete = no_signs.cycles[0].days[0].feedback
+
+    avoid = evaluate_observations(
+        [DailyObservation(observation_date=start, fluid=_dry())],
+        AppSettings(tracking_goal=TrackingGoal.AVOID_PREGNANCY),
+    ).cycles[0].days[0].feedback
+
+    assert incomplete is not None
+    assert incomplete.label == UserFertilityLabel.NOT_ENOUGH_INFORMATION
+    assert avoid is not None
+    assert avoid.label == UserFertilityLabel.FERTILITY_POSSIBLE
+    assert "treat today as potentially fertile" in avoid.action
+
+
+def test_confirmed_day_feedback_says_post_ovulation_not_absolute_infertility() -> None:
+    report = evaluate_observations(_stm_cycle(dt.date(2026, 4, 1), length=12, shift_day=7))
+    confirmed = report.cycles[0].days[8].feedback
+
+    assert confirmed is not None
+    assert confirmed.label == UserFertilityLabel.POST_OVULATION_CONFIRMED
+    assert confirmed.headline == "Post-ovulation phase confirmed"
 
 
 def _history_with_current(

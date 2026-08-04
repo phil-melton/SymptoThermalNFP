@@ -18,7 +18,9 @@ from .taxonomy import (
     MucusColor,
     MucusTexture,
     RuleContext,
+    TemperatureDisturbance,
     TemperatureUnit,
+    TrackingGoal,
 )
 
 DEFAULT_DB_PATH = "data/local.db"
@@ -44,6 +46,7 @@ def build_parser() -> argparse.ArgumentParser:
     set_settings.add_argument("--temperature-unit", choices=_enum_values(TemperatureUnit))
     set_settings.add_argument("--wake-time", help="Default wake time in HH:MM format")
     set_settings.add_argument("--rule-context", choices=_enum_values(RuleContext))
+    set_settings.add_argument("--goal", choices=_enum_values(TrackingGoal))
     set_settings.add_argument(
         "--transition-cycle-count",
         type=int,
@@ -91,6 +94,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--temperature-disturbed",
         action="store_true",
         help="Mark that sleep/measurement conditions were disturbed",
+    )
+    log_observation.add_argument(
+        "--temperature-disturbance",
+        action="append",
+        choices=_enum_values(TemperatureDisturbance),
+        default=[],
+        help="Record a specific disturbance; may be repeated",
     )
     log_observation.add_argument("--fluid-sensation", choices=_enum_values(FluidSensation))
     log_observation.add_argument("--fluid-quantity", choices=_enum_values(FluidQuantity))
@@ -148,6 +158,7 @@ def handle_set_settings(args: argparse.Namespace) -> int:
     temperature_unit = TemperatureUnit(args.temperature_unit) if args.temperature_unit else existing.temperature_unit
     wake_time = args.wake_time if args.wake_time else existing.default_wake_time
     rule_context = RuleContext(args.rule_context) if args.rule_context else existing.rule_context
+    tracking_goal = TrackingGoal(args.goal) if args.goal else existing.tracking_goal
     transition_cycle_count = (
         args.transition_cycle_count
         if args.transition_cycle_count is not None
@@ -179,6 +190,7 @@ def handle_set_settings(args: argparse.Namespace) -> int:
         use_doering_rule=use_doering_rule,
         use_rotzer_rule=use_rotzer_rule,
         bip_enabled=bip_enabled,
+        tracking_goal=tracking_goal,
     )
     store.save_settings(updated)
     print("Settings updated")
@@ -197,6 +209,7 @@ def handle_show_settings(args: argparse.Namespace) -> int:
     print(f"use_doering_rule: {settings.use_doering_rule}")
     print(f"use_rotzer_rule: {settings.use_rotzer_rule}")
     print(f"bip_enabled: {settings.bip_enabled}")
+    print(f"tracking_goal: {settings.tracking_goal.value}")
     return 0
 
 
@@ -216,6 +229,9 @@ def handle_log_observation(args: argparse.Namespace) -> int:
         temperature_unit=TemperatureUnit(args.temperature_unit) if args.temperature_unit else None,
         temperature_time=temperature_time,
         temperature_disturbed=bool(args.temperature_disturbed),
+        temperature_disturbances=[
+            TemperatureDisturbance(item) for item in args.temperature_disturbance
+        ],
         fluid=fluid,
         cervical_position=cervical_position,
         bleeding=BleedingLevel(args.bleeding),
@@ -361,6 +377,7 @@ def handle_interpret(args: argparse.Namespace) -> int:
 def handle_plot_cycle(args: argparse.Namespace) -> int:
     store = _store_from_args(args)
     store.initialize()
+    settings = store.load_settings()
 
     # Find the cycle snapshot for the given index
     cycles = store.list_cycle_snapshots()
@@ -385,7 +402,7 @@ def handle_plot_cycle(args: argparse.Namespace) -> int:
         return 1
 
     from .plot import plot_cycle
-    plot_cycle(observations, save_path=args.save)
+    plot_cycle(observations, save_path=args.save, settings=settings)
     return 0
 
 

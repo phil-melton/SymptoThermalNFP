@@ -15,12 +15,29 @@ class TemperatureUnit(StringEnum):
     FAHRENHEIT = "fahrenheit"
 
 
+class TrackingGoal(StringEnum):
+    AVOID_PREGNANCY = "avoid_pregnancy"
+    ACHIEVE_PREGNANCY = "achieve_pregnancy"
+    UNDERSTAND_CYCLE = "understand_cycle"
+
+
 class RuleContext(StringEnum):
     STANDARD = "standard"
     POST_HORMONAL = "post_hormonal"
     POSTPARTUM = "postpartum"
     POST_MISCARRIAGE = "post_miscarriage"
     DELAYED_FERTILITY = "delayed_fertility"
+    PERIMENOPAUSE = "perimenopause"
+
+
+class TemperatureDisturbance(StringEnum):
+    ILLNESS_OR_FEVER = "illness_or_fever"
+    POOR_SLEEP = "poor_sleep"
+    LATER_THAN_USUAL = "later_than_usual"
+    ALCOHOL = "alcohol"
+    TRAVEL = "travel"
+    MEASUREMENT_ISSUE = "measurement_issue"
+    OTHER = "other"
 
 
 class FluidSensation(StringEnum):

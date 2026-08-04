@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime, time
 from typing import Any, Iterable
 
@@ -14,7 +14,9 @@ from .taxonomy import (
     MucusColor,
     MucusTexture,
     RuleContext,
+    TemperatureDisturbance,
     TemperatureUnit,
+    TrackingGoal,
 )
 
 MAX_NOTES_LENGTH = 2000
@@ -101,6 +103,7 @@ class DailyObservation:
     temperature_unit: TemperatureUnit | None = None
     temperature_time: time | None = None
     temperature_disturbed: bool = False
+    temperature_disturbances: list[TemperatureDisturbance] = field(default_factory=list)
     fluid: FluidObservation | None = None
     cervical_position: CervicalPositionObservation | None = None
     bleeding: BleedingLevel = BleedingLevel.NONE
@@ -111,6 +114,9 @@ class DailyObservation:
             raise ValueError("Temperature time requires a temperature value.")
         if self.waking_temperature is not None:
             _validate_temperature(self.waking_temperature, self.temperature_unit)
+        if self.temperature_disturbances:
+            self.temperature_disturbed = True
+        self.temperature_disturbances = list(dict.fromkeys(self.temperature_disturbances))
         if len(self.notes) > MAX_NOTES_LENGTH:
             raise ValueError(f"Notes exceed {MAX_NOTES_LENGTH} characters.")
 
@@ -121,6 +127,7 @@ class DailyObservation:
             "temperature_unit": self.temperature_unit.value if self.temperature_unit else None,
             "temperature_time": self.temperature_time.strftime("%H:%M") if self.temperature_time else None,
             "temperature_disturbed": self.temperature_disturbed,
+            "temperature_disturbances": [item.value for item in self.temperature_disturbances],
             "fluid": self.fluid.as_dict() if self.fluid else None,
             "cervical_position": self.cervical_position.as_dict() if self.cervical_position else None,
             "bleeding": self.bleeding.value,
@@ -137,6 +144,10 @@ class DailyObservation:
             temperature_unit=TemperatureUnit(value["temperature_unit"]) if value.get("temperature_unit") else None,
             temperature_time=parse_hhmm_time(value["temperature_time"]) if value.get("temperature_time") else None,
             temperature_disturbed=bool(value.get("temperature_disturbed", False)),
+            temperature_disturbances=[
+                TemperatureDisturbance(item)
+                for item in value.get("temperature_disturbances", [])
+            ],
             fluid=FluidObservation.from_dict(fluid_data) if fluid_data else None,
             cervical_position=CervicalPositionObservation.from_dict(cervix_data) if cervix_data else None,
             bleeding=BleedingLevel(value.get("bleeding", BleedingLevel.NONE.value)),
@@ -154,6 +165,7 @@ class AppSettings:
     use_doering_rule: bool = False
     use_rotzer_rule: bool = False
     bip_enabled: bool = False
+    tracking_goal: TrackingGoal = TrackingGoal.UNDERSTAND_CYCLE
 
     def __post_init__(self) -> None:
         parse_hhmm_time(self.default_wake_time)
@@ -170,6 +182,7 @@ class AppSettings:
             "use_doering_rule": self.use_doering_rule,
             "use_rotzer_rule": self.use_rotzer_rule,
             "bip_enabled": self.bip_enabled,
+            "tracking_goal": self.tracking_goal.value,
         }
 
     @classmethod
@@ -183,6 +196,9 @@ class AppSettings:
             use_doering_rule=bool(value.get("use_doering_rule", False)),
             use_rotzer_rule=bool(value.get("use_rotzer_rule", False)),
             bip_enabled=bool(value.get("bip_enabled", False)),
+            tracking_goal=TrackingGoal(
+                value.get("tracking_goal", TrackingGoal.UNDERSTAND_CYCLE.value)
+            ),
         )
 
 

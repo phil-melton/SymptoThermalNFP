@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": ".test-build",
+    "skipLibCheck": true
+  },
+  "include": ["src/domain.ts", "src/types.ts", "tests/domain.test.ts"]
+}

@@ -18,7 +18,9 @@ from symptothermal_nfp.taxonomy import (
     MucusColor,
     MucusTexture,
     RuleContext,
+    TemperatureDisturbance,
     TemperatureUnit,
+    TrackingGoal,
 )
 
 
@@ -35,6 +37,7 @@ def test_settings_round_trip(tmp_path) -> None:
         use_doering_rule=True,
         use_rotzer_rule=True,
         bip_enabled=True,
+        tracking_goal=TrackingGoal.AVOID_PREGNANCY,
     )
 
     store.save_settings(expected)
@@ -51,7 +54,11 @@ def test_observation_round_trip(tmp_path) -> None:
         waking_temperature=36.45,
         temperature_unit=TemperatureUnit.CELSIUS,
         temperature_time=dt.time(6, 20),
-        temperature_disturbed=False,
+        temperature_disturbed=True,
+        temperature_disturbances=[
+            TemperatureDisturbance.POOR_SLEEP,
+            TemperatureDisturbance.LATER_THAN_USUAL,
+        ],
         fluid=FluidObservation(
             sensation=FluidSensation.WATERY,
             quantity=FluidQuantity.HIGH,
@@ -100,7 +107,7 @@ def test_cycle_snapshots_from_storage(tmp_path) -> None:
     assert cycles[1].start_date == dt.date(2026, 4, 3)
 
 
-def test_schema_v1_database_migrates_to_v2(tmp_path) -> None:
+def test_schema_v1_database_migrates_to_latest(tmp_path) -> None:
     db_path = tmp_path / "local.db"
     with sqlite3.connect(db_path) as connection:
         connection.execute(
@@ -171,3 +178,4 @@ def test_schema_v1_database_migrates_to_v2(tmp_path) -> None:
     assert observation.fluid.color == MucusColor.NONE
     assert observation.fluid.texture == MucusTexture.NONE
     assert observation.temperature_unit == TemperatureUnit.CELSIUS
+    assert observation.temperature_disturbances == []

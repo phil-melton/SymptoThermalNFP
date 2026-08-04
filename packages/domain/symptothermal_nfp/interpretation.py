@@ -23,6 +23,7 @@ from .taxonomy import (
     MucusTexture,
     RuleContext,
     TemperatureUnit,
+    TrackingGoal,
 )
 
 RULE_PACK_VERSION = "stm-v1"
@@ -34,6 +35,7 @@ _TRANSITION_CONTEXTS = {
     RuleContext.POSTPARTUM,
     RuleContext.POST_MISCARRIAGE,
 }
+_ALWAYS_LOCKED_PHASE1_CONTEXTS = {RuleContext.PERIMENOPAUSE}
 
 
 class FertilityStatus(str, Enum):
@@ -55,6 +57,13 @@ class WarningSeverity(str, Enum):
     INFO = "info"
     CAUTION = "caution"
     BLOCKING = "blocking"
+
+
+class UserFertilityLabel(str, Enum):
+    FERTILITY_POSSIBLE = "fertility_possible"
+    POST_OVULATION_CONFIRMED = "post_ovulation_confirmed"
+    LOWER_PROBABILITY_METHOD_RULES_APPLY = "lower_probability_method_rules_apply"
+    NOT_ENOUGH_INFORMATION = "not_enough_information"
 
 
 @dataclass(slots=True)
@@ -114,12 +123,58 @@ class TemperatureShift:
 
 
 @dataclass(slots=True)
+class InterpretationProgress:
+    temperature_high_count: int
+    temperature_high_required: int
+    temperature_confirmed: bool
+    mucus_lower_quality_count: int
+    mucus_lower_quality_required: int
+    mucus_confirmed: bool
+    temperature_recorded_today: bool
+    mucus_recorded_today: bool
+    data_quality_messages: list[str] = field(default_factory=list)
+    next_step: str = ""
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "temperature_high_count": self.temperature_high_count,
+            "temperature_high_required": self.temperature_high_required,
+            "temperature_confirmed": self.temperature_confirmed,
+            "mucus_lower_quality_count": self.mucus_lower_quality_count,
+            "mucus_lower_quality_required": self.mucus_lower_quality_required,
+            "mucus_confirmed": self.mucus_confirmed,
+            "temperature_recorded_today": self.temperature_recorded_today,
+            "mucus_recorded_today": self.mucus_recorded_today,
+            "data_quality_messages": list(self.data_quality_messages),
+            "next_step": self.next_step,
+        }
+
+
+@dataclass(slots=True)
+class UserFeedback:
+    label: UserFertilityLabel
+    headline: str
+    summary: str
+    action: str
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "label": self.label.value,
+            "headline": self.headline,
+            "summary": self.summary,
+            "action": self.action,
+        }
+
+
+@dataclass(slots=True)
 class DailyInterpretation:
     observation_date: date
     cycle_day: int
     status: FertilityStatus
     phase: CyclePhase
     reasons: list[str] = field(default_factory=list)
+    progress: InterpretationProgress | None = None
+    feedback: UserFeedback | None = None
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -128,6 +183,8 @@ class DailyInterpretation:
             "status": self.status.value,
             "phase": self.phase.value,
             "reasons": list(self.reasons),
+            "progress": self.progress.as_dict() if self.progress else None,
+            "feedback": self.feedback.as_dict() if self.feedback else None,
         }
 
 
@@ -227,6 +284,18 @@ def evaluate_observations(
                 message=(
                     "Pre-ovulatory relative infertility is locked during the first "
                     "six transition cycles."
+                ),
+                severity=WarningSeverity.BLOCKING,
+            )
+        )
+
+    if active_settings.rule_context in _ALWAYS_LOCKED_PHASE1_CONTEXTS:
+        report_warnings.append(
+            InterpretationWarning(
+                code="special_context_phase1_locked",
+                message=(
+                    "Pre-ovulatory relative infertility is not calculated in this "
+                    "special context; use method-specific instruction."
                 ),
                 severity=WarningSeverity.BLOCKING,
             )
@@ -366,6 +435,7 @@ def _evaluate_cycle(
         fertile_window_start_date=fertile_window_start_date,
         absolute_start_date=absolute_start,
         bip_statuses=bip_statuses,
+        settings=settings,
     )
 
     if temperature_shift:
@@ -434,6 +504,16 @@ def _phase1_dates(
             RuleTrace(
                 code="phase1_locked_transition_context",
                 message="Transition context locks Phase 1 relative infertility.",
+                observation_date=start,
+            )
+        )
+        return start, None
+
+    if settings.rule_context in _ALWAYS_LOCKED_PHASE1_CONTEXTS:
+        traces.append(
+            RuleTrace(
+                code="phase1_locked_special_context",
+                message="Special context locks Phase 1 relative infertility.",
                 observation_date=start,
             )
         )
@@ -581,6 +661,8 @@ def _find_mucus_confirmation_date(days: list[DailyObservation], peak_day: date |
         if observation.observation_date != expected_date:
             return None
         expected_date += timedelta(days=1)
+        if observation.fluid is None:
+            return None
         if _is_lower_quality_or_dry(observation.fluid):
             count += 1
             if count == 3:
@@ -603,7 +685,7 @@ def _is_peak_quality_mucus(fluid: FluidObservation | None) -> bool:
 
 def _is_lower_quality_or_dry(fluid: FluidObservation | None) -> bool:
     if fluid is None:
-        return True
+        return False
     if _is_peak_quality_mucus(fluid):
         return False
     if fluid.sensation in {FluidSensation.DRY, FluidSensation.STICKY, FluidSensation.CREAMY}:
@@ -748,11 +830,12 @@ def _daily_interpretations(
     fertile_window_start_date: date,
     absolute_start_date: date | None,
     bip_statuses: dict[date, FertilityStatus],
+    settings: AppSettings,
 ) -> list[DailyInterpretation]:
     start = days[0].observation_date
     daily: list[DailyInterpretation] = []
 
-    for observation in days:
+    for index, observation in enumerate(days):
         observation_date = observation.observation_date
         cycle_day = (observation_date - start).days + 1
         reasons: list[str] = []
@@ -785,6 +868,16 @@ def _daily_interpretations(
             else:
                 reasons = ["Basic Infertile Pattern is not available on this day."]
 
+        progress = _interpretation_progress(days[: index + 1], settings)
+        feedback = _user_feedback(
+            status=status,
+            progress=progress,
+            settings=settings,
+            begins_this_evening=(
+                status == FertilityStatus.ABSOLUTE_INFERTILITY_FROM_EVENING
+            ),
+        )
+
         daily.append(
             DailyInterpretation(
                 observation_date=observation_date,
@@ -792,10 +885,215 @@ def _daily_interpretations(
                 status=status,
                 phase=phase,
                 reasons=reasons,
+                progress=progress,
+                feedback=feedback,
             )
         )
 
     return daily
+
+
+def _interpretation_progress(
+    days: list[DailyObservation],
+    settings: AppSettings,
+) -> InterpretationProgress:
+    today = days[-1]
+    peak_day = _find_peak_day(days)
+    temperature_count, temperature_required, temperature_confirmed = (
+        _temperature_confirmation_progress(days, settings, peak_day)
+    )
+    mucus_count = _mucus_confirmation_progress(days)
+    mucus_confirmed = mucus_count >= 3
+    data_quality_messages: list[str] = []
+
+    if today.waking_temperature is None:
+        data_quality_messages.append("No waking temperature was recorded today.")
+    elif today.temperature_disturbed:
+        data_quality_messages.append(
+            "Today's temperature is marked disturbed and is excluded from confirmation."
+        )
+    if today.fluid is None:
+        data_quality_messages.append(
+            "No mucus observation was recorded today; missing does not count as dry."
+        )
+
+    if today.waking_temperature is None:
+        next_step = "Record a waking temperature before getting out of bed."
+    elif today.fluid is None:
+        next_step = "Record the most fertile mucus sign noticed today."
+    elif not temperature_confirmed:
+        if temperature_count:
+            remaining = max(temperature_required - temperature_count, 1)
+            next_step = (
+                f"Continue BBT charting; {remaining} more qualifying elevated "
+                f"temperature{'s' if remaining != 1 else ''} may be needed."
+            )
+        else:
+            next_step = "Continue daily BBT charting to establish six low temperatures."
+    elif not mucus_confirmed:
+        remaining = 3 - mucus_count
+        next_step = (
+            f"Continue mucus charting; {remaining} more lower-quality or dry "
+            f"day{'s' if remaining != 1 else ''} may be needed after Peak."
+        )
+    else:
+        next_step = "Temperature and mucus double-checks are confirmed."
+
+    return InterpretationProgress(
+        temperature_high_count=temperature_count,
+        temperature_high_required=temperature_required,
+        temperature_confirmed=temperature_confirmed,
+        mucus_lower_quality_count=min(mucus_count, 3),
+        mucus_lower_quality_required=3,
+        mucus_confirmed=mucus_confirmed,
+        temperature_recorded_today=today.waking_temperature is not None,
+        mucus_recorded_today=today.fluid is not None,
+        data_quality_messages=data_quality_messages,
+        next_step=next_step,
+    )
+
+
+def _mucus_confirmation_progress(days: list[DailyObservation]) -> int:
+    last_peak_index: int | None = None
+    for index, observation in enumerate(days):
+        if _is_peak_quality_mucus(observation.fluid):
+            last_peak_index = index
+
+    if last_peak_index is None:
+        return 0
+
+    expected_date = days[last_peak_index].observation_date + timedelta(days=1)
+    count = 0
+    for observation in days[last_peak_index + 1 :]:
+        if observation.observation_date != expected_date or observation.fluid is None:
+            return 0
+        expected_date += timedelta(days=1)
+        if _is_peak_quality_mucus(observation.fluid):
+            count = 0
+        elif _is_lower_quality_or_dry(observation.fluid):
+            count += 1
+        else:
+            count = 0
+    return count
+
+
+def _temperature_confirmation_progress(
+    days: list[DailyObservation],
+    settings: AppSettings,
+    peak_day: date | None,
+) -> tuple[int, int, bool]:
+    require_fourth = peak_day is None
+    shift = _find_temperature_shift(
+        days,
+        settings,
+        peak_day=peak_day,
+        require_fourth_for_unclear_mucus=require_fourth,
+    )
+    if shift:
+        return len(shift.high_dates), len(shift.high_dates), True
+
+    required = 4 if require_fourth else 3
+    temps = [_temperature_celsius(observation, settings) for observation in days]
+    best_count = 0
+
+    for high_start in range(6, len(days)):
+        high_start_date = days[high_start].observation_date
+        if peak_day and high_start_date < peak_day + timedelta(days=1):
+            continue
+        if not _dates_are_consecutive(days, high_start - 6, 7):
+            continue
+        baseline = temps[high_start - 6 : high_start]
+        if any(value is None for value in baseline):
+            continue
+        coverline = max(value for value in baseline if value is not None)
+        count = 0
+        for index in range(high_start, min(len(days), high_start + 4)):
+            if index > high_start and days[index].observation_date != days[index - 1].observation_date + timedelta(days=1):
+                break
+            value = temps[index]
+            if value is None or value <= coverline:
+                break
+            count += 1
+
+        if high_start + count != len(days):
+            continue
+        if count >= 3 and not _meets_temperature_threshold(temps[high_start + 2], coverline):
+            required = 4
+        best_count = max(best_count, min(count, required))
+
+    return best_count, required, False
+
+
+def _user_feedback(
+    *,
+    status: FertilityStatus,
+    progress: InterpretationProgress,
+    settings: AppSettings,
+    begins_this_evening: bool,
+) -> UserFeedback:
+    no_primary_signs = (
+        not progress.temperature_recorded_today and not progress.mucus_recorded_today
+    )
+
+    if status in {
+        FertilityStatus.ABSOLUTE_INFERTILITY,
+        FertilityStatus.ABSOLUTE_INFERTILITY_FROM_EVENING,
+    }:
+        label = UserFertilityLabel.POST_OVULATION_CONFIRMED
+        headline = "Post-ovulation phase confirmed"
+        summary = (
+            "Temperature and mucus double-checks confirm the post-ovulation phase"
+            + (" beginning this evening." if begins_this_evening else ".")
+        )
+    elif no_primary_signs:
+        label = UserFertilityLabel.NOT_ENOUGH_INFORMATION
+        headline = "Not enough information"
+        summary = "No temperature or mucus observation is available for today."
+    elif status in {
+        FertilityStatus.RELATIVE_INFERTILITY,
+        FertilityStatus.BASIC_INFERTILE_PATTERN_ALTERNATE_EVENING,
+    }:
+        label = UserFertilityLabel.LOWER_PROBABILITY_METHOD_RULES_APPLY
+        headline = "Lower probability — method rules apply"
+        summary = (
+            "A conservative Phase 1 or Basic Infertile Pattern rule applies; "
+            "this is not a guarantee."
+        )
+    else:
+        label = UserFertilityLabel.FERTILITY_POSSIBLE
+        headline = "Fertility possible"
+        summary = "The post-ovulation temperature and mucus double-check is not confirmed."
+
+    return UserFeedback(
+        label=label,
+        headline=headline,
+        summary=summary,
+        action=_feedback_action(label, settings.tracking_goal),
+    )
+
+
+def _feedback_action(label: UserFertilityLabel, goal: TrackingGoal) -> str:
+    if goal == TrackingGoal.AVOID_PREGNANCY:
+        if label in {
+            UserFertilityLabel.FERTILITY_POSSIBLE,
+            UserFertilityLabel.NOT_ENOUGH_INFORMATION,
+        }:
+            return (
+                "If avoiding pregnancy, treat today as potentially fertile and follow "
+                "your chosen method."
+            )
+        if label == UserFertilityLabel.LOWER_PROBABILITY_METHOD_RULES_APPLY:
+            return "Follow your method's Phase 1 or BIP instructions; lower probability is not zero."
+        return "Apply your chosen method's post-ovulation instructions."
+
+    if goal == TrackingGoal.ACHIEVE_PREGNANCY:
+        if label == UserFertilityLabel.FERTILITY_POSSIBLE:
+            return "If trying to conceive, this may be a fertile day."
+        if label == UserFertilityLabel.POST_OVULATION_CONFIRMED:
+            return "The fertile window appears closed for this cycle."
+        return "Keep charting both signs to identify the fertile window."
+
+    return "Keep recording temperature and the most fertile mucus sign each day."
 
 
 def _bip_statuses(days: list[DailyObservation], settings: AppSettings) -> dict[date, FertilityStatus]:

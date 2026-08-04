@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "SymptoThermal NFP",
+    "slug": "symptothermal-nfp",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F7F4ED",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.symptothermal.nfp"
+    },
+    "android": {
+      "package": "org.symptothermal.nfp"
+    }
+  }
+}
