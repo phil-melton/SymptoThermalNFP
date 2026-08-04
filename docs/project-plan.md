@@ -5,13 +5,13 @@
 This document captures the current implementation plan for a local-first, privacy-first, open-source fertility awareness tracker based on the Sympto-Thermal Method. It is intended as a handoff document for future implementation work.
 
 Implementation note: the Python domain now includes an on-demand STM rule engine
-(`stm-v1`), SQLite schema v2 support for richer mucus observations, and CLI JSON
-output for future app/browser integration.
+(`stm-v1`), SQLite schema v3 support for richer observations and preferences,
+Excel workbook persistence for the web app, and CLI JSON output.
 
 Direction update (2026-08-04): the primary interface is now a computer-first,
 local web app served by the Python package. It uses the canonical Python rule
-engine and SQLite store directly. The Expo client remains an optional prototype,
-not the main delivery target.
+engine and a local Excel workbook. The mobile prototype was removed; new
+user-facing work should target the desktop web interface.
 
 ## Product Goal
 

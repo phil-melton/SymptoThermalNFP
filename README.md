@@ -1,91 +1,72 @@
 # SymptoThermalNFP
 
-Python-first domain, local persistence, conservative symptothermal
-interpretation, and a computer-first local web interface are now in place.
+A computer-first, local fertility charting tool with conservative
+symptothermal interpretation. The primary interface runs in a desktop browser;
+there is no mobile app, account, cloud backend, or analytics service.
 
-The primary user interface runs in a desktop browser while keeping data in the
-local SQLite database. It provides onboarding, quick morning/evening charting,
-plain-language fertility feedback, confirmation progress, cycle charts, and
-history. No account, cloud backend, or analytics are required.
+> **Warning**
+>
+> This project is predominantly AI-generated. Its symptothermal rules have not
+> been independently verified by a qualified professional. It is educational
+> software, not medical advice, and should not be the sole basis for avoiding
+> or achieving pregnancy. Consult a certified NFP/FABM instructor or healthcare
+> provider before acting on its feedback.
 
-## What Is Implemented In This Stage
+## Desktop quick start
 
-1. Domain models for daily observations and settings.
-2. Symptom taxonomy enums for temperature, fluid, bleeding, and cervical signs.
-3. Local SQLite persistence with migration tracking.
-4. Conservative STM interpretation with BBT 3-over-6, Peak Day, Phase 1,
-   BIP, transition-context warnings, and luteal-phase warnings.
-5. CLI commands for fast daily logging, history review, settings, and
-   interpretation.
-6. JSON interpretation output for future browser/mobile wiring.
-7. Automated tests for domain, storage, CLI, and interpretation behavior.
-8. Desktop-first Today, Chart, and History workflows.
-
-## Repository Shape
-
-```text
-apps/
-  mobile/
-docs/
-  project-plan.md
-  agent-reports/
-packages/
-  domain/
-    symptothermal_nfp/
-tests/
+```powershell
+pip install -e .[dev]
+symptothermal web
 ```
 
-## Quick Start
+The app opens at `http://127.0.0.1:5000/`. Use `symptothermal web --no-open`
+to leave the browser closed, or `symptothermal web --data-file path/to/chart.xlsx`
+to use another workbook.
 
-1. Create a Python environment.
-2. Install development dependencies:
+All web data is stored locally in `data/symptothermal.xlsx` by default. Saves
+are crash-safe: the workbook is replaced atomically and the prior version is
+kept as `<name>.xlsx.bak`. POST forms are CSRF-protected.
 
-   ```bash
-   pip install -e .[dev]
-   ```
+## Desktop workflows
 
-3. Initialize local data store:
+- Enter a date, waking temperature, time, mucus observation, bleeding, and
+  optional notes from one wide daily-entry screen.
+- See the latest plain-language fertility interpretation beside the entry
+  workflow.
+- Review an interactive temperature chart with fertility bands, coverline,
+  Peak Day, bleeding, and disturbed-temperature markers.
+- Edit or delete prior observations from the history table.
+- Download the current workbook, import another `.xlsx` file, or download a
+  blank template.
+- Configure units, wake time, cycle context, and optional advanced rules.
 
-   ```bash
-   symptothermal init-db
-   ```
+## Implemented foundation
 
-4. Set baseline settings:
+1. Domain models for daily observations and settings.
+2. Symptom taxonomies for temperature, fluid, bleeding, and cervical signs.
+3. Conservative interpretation with BBT 3-over-6, Peak Day, Phase 1, BIP,
+   transition-context warnings, and luteal-phase warnings.
+4. Structured feedback and temperature/mucus confirmation progress.
+5. Excel persistence for the desktop web app, plus SQLite persistence and CLI
+   commands for programmatic workflows.
+6. JSON interpretation APIs at `/api/interpretation` and `/api/observations`.
+7. Automated domain, storage, Excel, web, and fertile-window scenario tests.
 
-   ```bash
-   symptothermal set-settings --temperature-unit celsius --wake-time 06:30 --track-cervical-position
-   ```
+## CLI workflows
 
-   Optional rule context flags include `--rule-context post_hormonal`,
-   `--transition-cycle-count 2`, `--use-doering-rule`,
-   `--use-rotzer-rule`, and `--enable-bip`.
+```powershell
+symptothermal init-db
+symptothermal set-settings --temperature-unit celsius --wake-time 06:30
+symptothermal log-observation --date 2026-04-06 --temperature 36.45 --temperature-time 06:22 --fluid-sensation watery --bleeding none
+symptothermal list-observations
+symptothermal list-cycles
+symptothermal interpret --json
+```
 
-5. Log a daily observation:
+SQLite commands use `data/local.db` by default. Pass
+`symptothermal --db path/to/local.db <command>` to select another database.
 
-   ```bash
-   symptothermal log-observation --date 2026-04-06 --temperature 36.45 --temperature-time 06:22 --fluid-sensation watery --fluid-quantity high --fluid-color clear --fluid-texture stretchy --fluid-amount 5 --bleeding none --notes "Felt well-rested"
-   ```
-
-6. View observations, cycle history, and interpretation:
-
-   ```bash
-   symptothermal list-observations
-   symptothermal list-cycles
-   symptothermal interpret
-   symptothermal interpret --json
-   ```
-
-7. Open the computer interface:
-
-   ```bash
-   symptothermal web
-   ```
-
-   The app opens at `http://127.0.0.1:8765/`. Data stays in `data/local.db`.
-
-## Interpretation Contract
-
-The reusable Python API is:
+## Interpretation API
 
 ```python
 from symptothermal_nfp import AppSettings, evaluate_observations
@@ -94,19 +75,14 @@ report = evaluate_observations(observations, AppSettings())
 payload = report.as_dict()
 ```
 
-`symptothermal interpret --json` emits the same stable payload with
-`rule_pack_version`, cycle-level confirmations, daily fertility statuses,
-warnings, rule traces, user-facing feedback, and structured confirmation
-progress. Results are calculated on demand and are not persisted.
+The payload includes rule versioning, cycle confirmations, daily fertility
+statuses, warnings, rule traces, plain-language feedback, and structured
+confirmation progress. Results are calculated on demand and are not persisted.
 
-## Desktop Interface
+## Repository shape
 
-```bash
-symptothermal web
+```text
+docs/
+packages/domain/symptothermal_nfp/
+tests/
 ```
-
-Use `symptothermal web --no-open` to start without opening a browser, or
-`symptothermal --db path/to/chart.db web` to select a different local database.
-
-The earlier Expo implementation remains in `apps/mobile` as an optional
-prototype. It is not the primary product surface.

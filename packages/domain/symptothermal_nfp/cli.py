@@ -140,9 +140,13 @@ def build_parser() -> argparse.ArgumentParser:
     plot_cycle_parser.add_argument("--save", help="Path to save the generated image (e.g., cycle.png)")
     plot_cycle_parser.set_defaults(handler=handle_plot_cycle)
 
-    web_parser = subparsers.add_parser("web", help="Run the local desktop web app")
+    web_parser = subparsers.add_parser("web", help="Run the computer-first local web app")
     web_parser.add_argument("--host", default="127.0.0.1", help="Local interface to bind")
-    web_parser.add_argument("--port", type=int, default=8765, help="Local port to bind")
+    web_parser.add_argument("--port", type=int, default=5000, help="Local port to bind")
+    web_parser.add_argument(
+        "--data-file",
+        help="Path to the Excel workbook (default: data/symptothermal.xlsx)",
+    )
     web_parser.add_argument("--no-open", action="store_true", help="Do not open the browser automatically")
     web_parser.set_defaults(handler=handle_web)
 
@@ -415,14 +419,19 @@ def handle_plot_cycle(args: argparse.Namespace) -> int:
 
 
 def handle_web(args: argparse.Namespace) -> int:
-    from .web import serve_desktop_app
+    import threading
+    import webbrowser
 
-    serve_desktop_app(
-        args.db,
-        host=args.host,
-        port=args.port,
-        open_browser=not args.no_open,
-    )
+    from .web.app import create_app
+
+    app = create_app(args.data_file)
+    url = f"http://{args.host}:{args.port}/"
+    if not args.no_open:
+        opener = threading.Timer(0.6, webbrowser.open, args=(url,))
+        opener.daemon = True
+        opener.start()
+    print(f"SymptoThermalNFP desktop UI on {url} (data: {app.config['DATA_PATH']})")
+    app.run(host=args.host, port=args.port, debug=False)
     return 0
 
 

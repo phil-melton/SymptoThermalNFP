@@ -1,2 +1,3 @@
 [console_scripts]
 symptothermal = symptothermal_nfp.cli:main
+symptothermal-web = symptothermal_nfp.web.app:main

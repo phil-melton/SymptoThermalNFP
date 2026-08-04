@@ -10,6 +10,8 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.8.0",
+    "flask>=3.0",
+    "openpyxl>=3.1",
 ]
 
 [project.optional-dependencies]
@@ -17,15 +19,16 @@ dev = ["pytest>=8.0"]
 
 [project.scripts]
 symptothermal = "symptothermal_nfp.cli:main"
+symptothermal-web = "symptothermal_nfp.web.app:main"
+
+[tool.setuptools.package-data]
+symptothermal_nfp = ["web/templates/*.html"]
 
 [tool.setuptools]
 package-dir = {"" = "packages/domain"}
 
 [tool.setuptools.packages.find]
 where = ["packages/domain"]
-
-[tool.setuptools.package-data]
-symptothermal_nfp = ["web_assets/*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["packages/domain"]

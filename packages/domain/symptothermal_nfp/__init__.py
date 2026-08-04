@@ -23,6 +23,7 @@ from .models import (
     FluidObservation,
     build_cycle_history,
 )
+from .excel_store import ExcelStore, ExcelStoreError, ImportResult, build_workbook
 from .storage import LocalStore
 from .taxonomy import (
     BleedingLevel,
@@ -51,6 +52,10 @@ __all__ = [
     "CycleSnapshot",
     "DailyInterpretation",
     "DailyObservation",
+    "ExcelStore",
+    "ExcelStoreError",
+    "ImportResult",
+    "build_workbook",
     "FertilityStatus",
     "FluidObservation",
     "FluidQuantity",
